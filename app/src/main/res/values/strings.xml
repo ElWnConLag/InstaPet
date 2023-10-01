@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">InstaPet</string>
+    <string name="titulo_de_publicacion" />
+    <string name="todo2" />
+    <string name="todo1" />
+    <string name="todo" />
 </resources>
