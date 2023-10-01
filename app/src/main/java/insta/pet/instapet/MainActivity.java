@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         mEditTextEmail = findViewById(R.id.editTextEmail);
         mEditTextPass = findViewById(R.id.editTextPass);
         mButtonInicio = findViewById(R.id.btnInicio);
-        mTextViewRespuesta = findViewById(R.id.textViewRespuesta);
         mTextViewIrRegistrar = findViewById(R.id.textViewIrRegistrar);
 
         mAuth = FirebaseAuth.getInstance();

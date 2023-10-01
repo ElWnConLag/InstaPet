@@ -39,7 +39,6 @@ public class RegistroActivity extends AppCompatActivity {
         mEditTextPass = findViewById(R.id.editTextPass);
         mEditTextConfirmarPass = findViewById(R.id.editConfirmarPass);
         mButtonRegistrar = findViewById(R.id.btnRegistrar);
-        mTextViewRespuestaR = findViewById(R.id.textViewRespuestaR);
 
         mAuth = FirebaseAuth.getInstance();
 
