@@ -16,16 +16,32 @@ tools:context=".HomeActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bienvenido"
-        android:textStyle="bold"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnCerrarSecion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cerrar Sesión"/>
+        android:text="Cerrar Sesión" />
 
+    <Button
+        android:id="@+id/adopcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="adopcion" />
 
+    <Button
+        android:id="@+id/buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="buscar" />
+
+    <Button
+        android:id="@+id/ajustes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ajustes" />
 
 
 </LinearLayout>

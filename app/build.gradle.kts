@@ -45,4 +45,10 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-auth:21.0.1")
+
+
+
+    implementation("com.google.firebase:firebase-storage:20.2.1")
+    implementation ("com.squareup.picasso:picasso:2.71828")
+    implementation("com.google.firebase:firebase-database")
 }

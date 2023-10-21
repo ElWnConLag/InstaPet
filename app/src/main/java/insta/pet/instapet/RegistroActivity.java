@@ -1,11 +1,10 @@
 package insta.pet.instapet;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
+import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +38,7 @@ public class RegistroActivity extends AppCompatActivity {
         mEditTextPass = findViewById(R.id.editTextPass);
         mEditTextConfirmarPass = findViewById(R.id.editConfirmarPass);
         mButtonRegistrar = findViewById(R.id.btnRegistrar);
+        mTextViewRespuestaR = findViewById(R.id.textViewRespuestaR);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -90,3 +90,4 @@ public class RegistroActivity extends AppCompatActivity {
         mTextViewRespuestaR.setText(mensaje);
     }
 }
+

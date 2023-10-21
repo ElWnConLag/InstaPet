@@ -13,6 +13,24 @@
         android:theme="@style/Theme.InstaPet"
         tools:targetApi="31">
         <activity
+            android:name=".Ajustes"
+            android:exported="false" />
+        <activity
+            android:name=".buscarPerfil"
+            android:exported="false" />
+        <activity
+            android:name=".avisosAdopcion"
+            android:exported="false" />
+        <activity
+            android:name=".VentanaInicio"
+            android:exported="false" />
+        <activity
+            android:name=".Perfil_activity"
+            android:exported="false" />
+        <activity
+            android:name=".nuevaMascota"
+            android:exported="false" />
+        <activity
             android:name=".CrearHilo"
             android:exported="false" />
         <activity
