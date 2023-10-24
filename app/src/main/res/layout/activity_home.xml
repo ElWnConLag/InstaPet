@@ -26,6 +26,8 @@ tools:context=".HomeActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bienvenido"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:textSize="30dp"
             android:textStyle="bold" />
 
