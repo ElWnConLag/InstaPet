@@ -6,43 +6,75 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".HomeActivity">
 
-<LinearLayout
+    <ImageView
+        android:id="@+id/fondo"
+        android:layout_width="414dp"
+        android:layout_height="731dp"
+        android:alpha="0.9"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fondo"
+        tools:layout_editor_absoluteX="-3dp" />
+
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bienvenido"
-        android:textSize="30dp"
-        android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnCerrarSecion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cerrar Sesión" />
+        <Button
+            android:id="@+id/btnCerrarSecion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cerrar Sesión" />
 
-    <Button
-        android:id="@+id/adopcion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="adopcion" />
+        <LinearLayout
+            android:layout_width="377dp"
+            android:layout_height="wrap_content"
+            android:background="@color/adp_background"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/buscar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="buscar" />
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="93dp"
+                android:text="Button" />
 
-    <Button
-        android:id="@+id/ajustes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ajustes" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
+
+            <Button
+                android:id="@+id/adopcion"
+                android:layout_width="61dp"
+                android:layout_height="63dp"
+                android:text="adopcion"
+                app:icon="@drawable/adp_foreground"
+
+                />
+
+            <Button
+                android:id="@+id/buscar"
+                android:layout_width="61dp"
+                android:layout_height="63dp"
+                android:text="buscar" />
+
+            <Button
+                android:id="@+id/ajustes"
+                android:layout_width="61dp"
+                android:layout_height="63dp"
+                android:text="ajustes" />
+        </LinearLayout>
 
 
-</LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
