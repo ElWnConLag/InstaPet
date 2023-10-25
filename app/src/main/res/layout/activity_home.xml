@@ -30,7 +30,7 @@ tools:context=".HomeActivity">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bienvenido"
+            android:text="Ventana de inicio"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="30dp"
@@ -78,6 +78,12 @@ tools:context=".HomeActivity">
 
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/irPerfil"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:text="ir a perfil" />
 
 
     </LinearLayout>
