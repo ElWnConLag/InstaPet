@@ -17,10 +17,15 @@ tools:context=".HomeActivity">
         tools:layout_editor_absoluteX="-3dp" />
 
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -55,21 +60,23 @@ tools:context=".HomeActivity">
                 android:layout_width="61dp"
                 android:layout_height="63dp"
                 android:text="adopcion"
-                app:icon="@drawable/adp_foreground"
-
-                />
+                app:icon="@drawable/adp_foreground" />
 
             <Button
                 android:id="@+id/buscar"
                 android:layout_width="61dp"
                 android:layout_height="63dp"
                 android:text="buscar" />
-
             <Button
-                android:id="@+id/ajustes"
+                android:id="@+id/settings"
                 android:layout_width="61dp"
                 android:layout_height="63dp"
-                android:text="ajustes" />
+                android:text="Settings" />
+
+
+
+
+
         </LinearLayout>
 
 

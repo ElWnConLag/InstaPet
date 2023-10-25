@@ -16,7 +16,8 @@ public class HomeActivity extends AppCompatActivity {
     Button mButtonCerrarSecion;
     Button botonAdopcion;
     Button botonBuscar;
-    Button botonAjustes;
+    Button botonSettings;
+
     FirebaseAuth mAuth;
 
     @Override
@@ -27,7 +28,8 @@ public class HomeActivity extends AppCompatActivity {
         mButtonCerrarSecion = findViewById(R.id.btnCerrarSecion);
         botonAdopcion = findViewById(R.id.adopcion);
         botonBuscar = findViewById(R.id.buscar);
-        botonAjustes =findViewById(R.id.ajustes);
+        botonSettings = findViewById(R.id.settings);
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -53,13 +55,16 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        botonAjustes.setOnClickListener(new View.OnClickListener() {
+        botonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, Ajustes.class);
+                Intent intent = new Intent(HomeActivity.this, Settings.class);
                 startActivity(intent);
             }
         });
+
+
+
     }
 
     @Override

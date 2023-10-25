@@ -22,7 +22,7 @@ public class Ajustes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
 
-        Volver = findViewById(R.id.volverAjustes);
+
 
         Volver.setOnClickListener(new View.OnClickListener() {
             @Override
