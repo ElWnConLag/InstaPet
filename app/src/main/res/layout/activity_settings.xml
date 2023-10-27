@@ -4,13 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFEE5F"
     tools:context=".Settings">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="154dp"
-        android:layout_height="99dp"
-        android:text="ola, se supone que aqui van los ajustes"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="123dp" />
+    <Button
+        android:id="@+id/volverSettings"
+        android:layout_width="66dp"
+        android:layout_height="68dp"
+        android:backgroundTint="#FEA728"
+        android:textColor="#000000"
+        android:textColorHighlight="#000000"
+        android:textColorHint="#000000"
+        android:textColorLink="#000000"
+        app:icon="@android:drawable/ic_menu_revert"
+        app:iconTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024" />
+
+    <Button
+        android:id="@+id/botonInvitarUnAmigo"
+        android:layout_width="212dp"
+        android:layout_height="49dp"
+        android:backgroundTint="#FFA828"
+        android:text="Invitar un amigo"
+        android:textColor="#000000"
+        android:textColorHighlight="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.863"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/deleteAccountButton"
+        android:layout_width="202dp"
+        android:layout_height="53dp"
+        android:backgroundTint="#FFA828"
+        android:text="Eliminar Cuenta"
+        android:textColor="#000000"
+        android:textColorHighlight="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.376"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/botonDesactivarNotificaciones"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#FFA828"
+        android:text="Desactivar Notificaciones"
+        android:textColor="#000000"
+        android:textColorHighlight="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.477"
+        tools:ignore="MissingConstraints" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

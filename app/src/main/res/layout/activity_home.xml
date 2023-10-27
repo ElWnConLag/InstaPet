@@ -67,11 +67,14 @@ tools:context=".HomeActivity">
                 android:layout_width="61dp"
                 android:layout_height="63dp"
                 android:text="buscar" />
+
             <Button
                 android:id="@+id/settings"
                 android:layout_width="61dp"
                 android:layout_height="63dp"
-                android:text="Settings" />
+                android:text="¿"
+                app:icon="@android:drawable/ic_menu_manage"
+                app:iconTint="#FFFFFF" />
 
 
 
