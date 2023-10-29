@@ -11,7 +11,7 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class HomeActivity extends AppCompatActivity {
+public class C_Home extends AppCompatActivity {
 
     Button mButtonCerrarSecion;
     Button botonAdopcion;
@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.c_home_act);
 
         mButtonCerrarSecion = findViewById(R.id.btnCerrarSecion);
         botonAdopcion = findViewById(R.id.adopcion);
@@ -46,28 +46,28 @@ public class HomeActivity extends AppCompatActivity {
         botonAdopcion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, avisosAdopcion.class);
+                Intent intent = new Intent(C_Home.this, avisosAdopcion.class);
                 startActivity(intent);
             }
         });
         botonBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, buscarPerfil.class);
+                Intent intent = new Intent(C_Home.this, J_BuscarPerfil.class);
                 startActivity(intent);
             }
         });
         botonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, Settings.class);
+                Intent intent = new Intent(C_Home.this, K_Ajustes.class);
                 startActivity(intent);
             }
         });
         botonPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, Perfil_activity.class);
+                Intent intent = new Intent(C_Home.this, Perfil_activity.class);
                 startActivity(intent);
             }
         });
@@ -85,7 +85,7 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
     private void irMain() {
-        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+        Intent intent = new Intent(C_Home.this, A_Login.class);
         startActivity(intent);
         finish();
     }

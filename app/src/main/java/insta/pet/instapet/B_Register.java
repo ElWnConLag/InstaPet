@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegistroActivity extends AppCompatActivity {
+public class B_Register extends AppCompatActivity {
 
     private EditText mEditTextEmail;
     private EditText mEditTextPass;
@@ -32,7 +32,7 @@ public class RegistroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro);
+        setContentView(R.layout.b_register_act);
 
         mEditTextEmail = findViewById(R.id.editTextEmail);
         mEditTextPass = findViewById(R.id.editTextPass);

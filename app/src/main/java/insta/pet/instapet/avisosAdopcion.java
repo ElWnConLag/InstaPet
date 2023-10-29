@@ -20,7 +20,7 @@ public class avisosAdopcion extends AppCompatActivity {
         Volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(avisosAdopcion.this, HomeActivity.class);
+                Intent intent = new Intent(avisosAdopcion.this, C_Home.class);
                 startActivity(intent);
             }
         });

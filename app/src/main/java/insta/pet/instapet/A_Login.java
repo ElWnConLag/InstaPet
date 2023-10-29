@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,19 +16,14 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthOptions;
-import com.google.firebase.auth.PhoneAuthProvider;
 
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MainActivity extends AppCompatActivity {
+public class A_Login extends AppCompatActivity {
 
     EditText mEditTextEmail;
     EditText mEditTextPass;
@@ -45,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.a_login_act);
 
         mEditTextEmail = findViewById(R.id.editTextEmail);
         mEditTextPass = findViewById(R.id.editTextPass);
@@ -58,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         mTextViewIrRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+                Intent intent = new Intent(A_Login.this, B_Register.class);
                 startActivity(intent);
             }
         });
@@ -107,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void irHome(){
-        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+        Intent intent = new Intent(A_Login.this, C_Home.class);
         startActivity(intent);
         finish();
     }

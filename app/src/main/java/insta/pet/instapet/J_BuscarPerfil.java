@@ -7,20 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class buscarPerfil extends AppCompatActivity {
+public class J_BuscarPerfil extends AppCompatActivity {
     Button Volver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buscar_perfil);
+        setContentView(R.layout.j_buscarperfil_act);
 
         Volver = findViewById(R.id.volverPerfil);
 
         Volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(buscarPerfil.this, HomeActivity.class);
+                Intent intent = new Intent(J_BuscarPerfil.this, C_Home.class);
                 startActivity(intent);
             }
         });

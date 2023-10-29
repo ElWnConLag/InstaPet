@@ -13,13 +13,13 @@
         android:theme="@style/Theme.InstaPet"
         tools:targetApi="31">
         <activity
-            android:name=".Settings"
+            android:name=".K_Ajustes"
             android:exported="false" />
         <activity
             android:name=".Ajustes"
             android:exported="false" />
         <activity
-            android:name=".buscarPerfil"
+            android:name=".J_BuscarPerfil"
             android:exported="false" />
         <activity
             android:name=".avisosAdopcion"
@@ -37,13 +37,13 @@
             android:name=".CrearHilo"
             android:exported="false" />
         <activity
-            android:name=".RegistroActivity"
+            android:name=".B_Register"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".C_Home"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".A_Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

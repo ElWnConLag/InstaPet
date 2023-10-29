@@ -1,7 +1,7 @@
 package insta.pet.instapet;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import android.widget.Toast;
 
-public class Settings extends AppCompatActivity {
+public class K_Ajustes extends AppCompatActivity {
 
     Button Volver;
     private FirebaseAuth mAuth;
@@ -27,7 +27,7 @@ public class Settings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.k_ajustes_act);
 
         Volver = findViewById(R.id.volverSettings);
         botonDesactivarNotificaciones = findViewById(R.id.botonDesactivarNotificaciones);
@@ -37,7 +37,7 @@ public class Settings extends AppCompatActivity {
         Volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Settings.this, HomeActivity.class);
+                Intent intent = new Intent(K_Ajustes.this, C_Home.class);
                 startActivity(intent);
             }
         });
@@ -56,10 +56,10 @@ public class Settings extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         // Cuenta eliminada con éxito
-                                        Toast.makeText(Settings.this, "La cuenta se ha eliminado con éxito.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(K_Ajustes.this, "La cuenta se ha eliminado con éxito.", Toast.LENGTH_SHORT).show();
                                     } else {
                                         // Error al eliminar la cuenta
-                                        Toast.makeText(Settings.this, "Error al eliminar la cuenta.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(K_Ajustes.this, "Error al eliminar la cuenta.", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -78,9 +78,9 @@ public class Settings extends AppCompatActivity {
                 editor.apply();
 
                 if (notificationsEnabled) {
-                    Toast.makeText(Settings.this, "Notificaciones desactivadas", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(K_Ajustes.this, "Notificaciones desactivadas", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(Settings.this, "Notificaciones habilitadas", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(K_Ajustes.this, "Notificaciones habilitadas", Toast.LENGTH_SHORT).show();
                 }
             }
         });
