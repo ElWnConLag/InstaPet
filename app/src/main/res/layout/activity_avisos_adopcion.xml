@@ -6,25 +6,89 @@
     android:layout_height="match_parent"
     tools:context=".avisosAdopcion">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="158dp"
-        android:layout_height="98dp"
-        android:text="Avisos adopcion"
-        android:textSize="34sp"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="213dp"
-        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/orangeBox1"
+        android:layout_width="368dp"
+        android:layout_height="590dp"
+        android:background="@android:color/holo_orange_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.778" />
 
     <Button
         android:id="@+id/volverAdopcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Volver"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/agregarAvisoo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="276dp"
+        android:layout_marginTop="628dp"
+        android:text="Aviso nuevo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/volverAdopcion" />
+
+    <TextView
+        android:id="@+id/avisosMascotas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="60dp"
+        android:text="Avisos de adopción"
+        android:textSize="29sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/perroImagen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avisosMascotas"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/perroNombre"
+        android:layout_width="282dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="52dp"
+        android:text="nombre"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/perroImagen" />
+
+    <TextView
+        android:id="@+id/sexoPerroAviso"
+        android:layout_width="195dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="80dp"
+        android:text="sexo"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/perroNombre" />
+
+    <TextView
+        android:id="@+id/ubicacionPerro"
+        android:layout_width="228dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="116dp"
+        android:text="Ubicación"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sexoPerroAviso" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
