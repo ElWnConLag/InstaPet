@@ -32,6 +32,8 @@ public class Settings extends AppCompatActivity {
         Volver = findViewById(R.id.volverSettings);
         botonDesactivarNotificaciones = findViewById(R.id.botonDesactivarNotificaciones);
 
+
+        //boton de volver
         Volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
