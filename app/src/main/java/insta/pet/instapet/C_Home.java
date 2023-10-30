@@ -7,17 +7,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class C_Home extends AppCompatActivity {
 
-    Button mButtonCerrarSecion;
-    Button botonAdopcion;
-    Button botonBuscar;
-    Button botonSettings;
-    Button botonPerfil;
+    ImageButton botonAdopcion;
+    ImageButton botonBuscar;
+    ImageButton botonSettings;
+    ImageButton botonPublicacion;
+    ImageButton botonPerfil;
+
 
     FirebaseAuth mAuth;
 
@@ -26,27 +28,21 @@ public class C_Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.c_home_act);
 
-        mButtonCerrarSecion = findViewById(R.id.btnCerrarSecion);
-        botonAdopcion = findViewById(R.id.adopcion);
-        botonBuscar = findViewById(R.id.buscar);
-        botonSettings = findViewById(R.id.settings);
-        botonPerfil = findViewById(R.id.irPerfil);
+        botonAdopcion = findViewById(R.id.btnAdoptar);
+        botonBuscar = findViewById(R.id.btnBuscar);
+        botonSettings = findViewById(R.id.btnAjustes);
+        botonPerfil = findViewById(R.id.perfil);
+        botonPublicacion = findViewById(R.id.AgregarPublicacion);
 
 
         mAuth = FirebaseAuth.getInstance();
 
-        mButtonCerrarSecion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-                irMain();
-            }
-        });
+
 
         botonAdopcion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(C_Home.this, avisosAdopcion.class);
+                Intent intent = new Intent(C_Home.this, O_AvisosAdopcion.class);
                 startActivity(intent);
             }
         });
@@ -68,6 +64,13 @@ public class C_Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(C_Home.this, Perfil_activity.class);
+                startActivity(intent);
+            }
+        });
+        botonPublicacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(C_Home.this, I_AgregarPublicacion.class);
                 startActivity(intent);
             }
         });

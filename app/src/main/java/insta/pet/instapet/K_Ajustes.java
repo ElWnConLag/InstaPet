@@ -21,6 +21,8 @@ public class K_Ajustes extends AppCompatActivity {
     private Button deleteAccountButton;
     private Button botonDesactivarNotificaciones;
 
+    Button mButtonCerrarSecion;
+
     private static final String PREFS_NAME = "MyPrefsFile";
     private static final String NOTIFICATIONS_ENABLED_KEY = "notifications_enabled";
 
@@ -31,6 +33,7 @@ public class K_Ajustes extends AppCompatActivity {
 
         Volver = findViewById(R.id.volverSettings);
         botonDesactivarNotificaciones = findViewById(R.id.botonDesactivarNotificaciones);
+        mButtonCerrarSecion = findViewById(R.id.CerrarSesion);
 
 
         //boton de volver
@@ -84,5 +87,20 @@ public class K_Ajustes extends AppCompatActivity {
                 }
             }
         });
+
+        mButtonCerrarSecion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                irMain();
+            }
+        });
+
+
+    }
+    private void irMain() {
+        Intent intent = new Intent(K_Ajustes.this, A_Login.class);
+        startActivity(intent);
+        finish();
     }
 }

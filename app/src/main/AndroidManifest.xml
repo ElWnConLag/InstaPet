@@ -13,6 +13,30 @@
         android:theme="@style/Theme.InstaPet"
         tools:targetApi="31">
         <activity
+            android:name=".R_MascotaGPS"
+            android:exported="false" />
+        <activity
+            android:name=".Q_ChatDueno"
+            android:exported="false" />
+        <activity
+            android:name=".N_InfoMascotaAdopcion"
+            android:exported="false" />
+        <activity
+            android:name=".M_PerfilMascota"
+            android:exported="false" />
+        <activity
+            android:name=".L_PerfilDueno"
+            android:exported="false" />
+        <activity
+            android:name=".H_Seguidores"
+            android:exported="false" />
+        <activity
+            android:name=".G_Seguidos"
+            android:exported="false" />
+        <activity
+            android:name=".I_AgregarPublicacion"
+            android:exported="false" />
+        <activity
             android:name=".K_Ajustes"
             android:exported="false" />
         <activity
@@ -22,7 +46,7 @@
             android:name=".J_BuscarPerfil"
             android:exported="false" />
         <activity
-            android:name=".avisosAdopcion"
+            android:name=".O_AvisosAdopcion"
             android:exported="false" />
         <activity
             android:name=".VentanaInicio"

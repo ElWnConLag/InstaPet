@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +30,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class agregarAviso extends AppCompatActivity {
+public class P_AgregarAviso extends AppCompatActivity {
 
     private EditText editTextNombrePerro;
     private EditText raza_id;
@@ -52,7 +50,7 @@ public class agregarAviso extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agregar_aviso);
+        setContentView(R.layout.p_agregaraviso_act);
 
         // Inicializa los EditText donde el usuario ingresa los datos a guardar
         editTextNombrePerro = findViewById(R.id.editTextNombrePerro);
@@ -202,13 +200,13 @@ public class agregarAviso extends AppCompatActivity {
 
     // Método para mostrar un mensaje Toast y navegar a la actividad anterior
     private void showToastAndNavigate(String message) {
-        Toast.makeText(agregarAviso.this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(P_AgregarAviso.this, message, Toast.LENGTH_SHORT).show();
 
     }
 
     // Método para mostrar un mensaje Toast
     private void showToast(String message) {
-        Toast.makeText(agregarAviso.this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(P_AgregarAviso.this, message, Toast.LENGTH_SHORT).show();
     }
 }
 

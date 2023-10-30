@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -18,11 +19,14 @@ import com.squareup.picasso.Picasso;
 public class Perfil_activity extends AppCompatActivity {
 
     private DatabaseReference myRef;
+    ImageButton botonVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_main);
+
+        botonVolver = findViewById(R.id.backButton);
 
         // Obtener referencia a los elementos ImageView y TextView
         ImageView imageViewProfile = findViewById(R.id.imageView4);
@@ -60,6 +64,14 @@ public class Perfil_activity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Manejar errores de lectura de la base de datos si es necesario
+            }
+        });
+
+        botonVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Perfil_activity.this, C_Home.class);
+                startActivity(intent);
             }
         });
     }
