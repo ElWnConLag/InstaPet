@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parte2jerson"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".P_AgregarAviso">
+    tools:context=".Perfil_activity">
+
 
     <View
-        android:id="@+id/orangeBox1"
+        android:id="@+id/orangeBox3333"
         android:layout_width="339dp"
         android:layout_height="472dp"
         android:background="@android:color/holo_orange_light"
@@ -15,20 +17,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.787" />
+        app:layout_constraintVertical_bias="0.797" />
 
     <TextView
-        android:id="@+id/perroNombre"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="240dp"
-        android:text="Nombre del perro:"
+        android:text="Nombre:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextNombrePerro"
+        android:id="@+id/nombrehilomascota"
         android:layout_width="238dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
@@ -43,17 +45,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="324dp"
-        android:text="Raza"
+        android:text="Raza:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/raza_id"
-        android:layout_width="284dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="364dp"
-        android:ems="10"
+        android:id="@+id/razahilomascota"
+        android:layout_width="238dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="368dp"
+        android:hint=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,21 +65,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginTop="436dp"
-        android:text="Sexo"
+        android:text="Sexo:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    "
+
     <EditText
-        android:id="@+id/sexoPerro"
-        android:layout_width="wrap_content"
+        android:id="@+id/sexohilomascota"
+        android:layout_width="238dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="476dp"
-        android:ems="10"
+        android:hint=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 
     <TextView
         android:id="@+id/textView4"
@@ -85,12 +87,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="540dp"
-        android:text="Ubicacion"
+        android:text="Tamaño:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/ubicacionPerro"
+        android:id="@+id/tamañohilomascota"
         android:layout_width="238dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
@@ -99,19 +101,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <Button
-        android:id="@+id/botonGuardar"
+        android:id="@+id/buttonhilomascota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="276dp"
-        android:layout_marginTop="640dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="628dp"
         android:text="Guardar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/seleccionarImage"
+        android:id="@+id/imagen_bt_hilomascota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
@@ -121,15 +122,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imagenPerfilPerro"
+        android:id="@+id/imageViewProfile222"
         android:layout_width="168dp"
         android:layout_height="112dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

@@ -42,50 +42,51 @@
         tools:layout_editor_absoluteX="-10dp"
         tools:layout_editor_absoluteY="-11dp" />
 
+
     <View
         android:id="@+id/orangeBox"
         android:layout_width="297dp"
         android:layout_height="184dp"
-        android:background="#673AB7"
+        android:background="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.205" />
+        app:layout_constraintVertical_bias="0.204" />
+
+
+    <TextView
+        android:id="@+id/masctoasname"
+        android:layout_width="75dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="120dp"
+        android:text="MASCOTAS"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imagenmascota1"
         android:layout_width="78dp"
         android:layout_height="75dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="148dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="78dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="156dp"
+    <TextView
+        android:id="@+id/nombrehilomascota11"
+        android:layout_width="75dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="236dp"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="78dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="264dp"
-        android:layout_marginTop="156dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/boton_hilomascota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
@@ -134,5 +135,7 @@
         android:text="editar perfil"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

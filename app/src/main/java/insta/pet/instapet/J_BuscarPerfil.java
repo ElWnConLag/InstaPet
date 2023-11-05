@@ -6,16 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class J_BuscarPerfil extends AppCompatActivity {
-    Button Volver;
+    ImageButton Volver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.j_buscarperfil_act);
 
-        Volver = findViewById(R.id.volverPerfil);
+        Volver = findViewById(R.id.volverBuscarPerfil);
 
         Volver.setOnClickListener(new View.OnClickListener() {
             @Override

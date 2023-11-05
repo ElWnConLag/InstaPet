@@ -6,20 +6,148 @@
     android:layout_height="match_parent"
     tools:context=".J_BuscarPerfil">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="148dp"
-        android:layout_height="38dp"
-        android:text="BuscarPerfil"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="174dp" />
+    <ImageView
+        android:id="@+id/fondo2"
+        android:layout_width="400dp"
+        android:layout_height="760dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fndbuscarperfil" />
 
-    <Button
-        android:id="@+id/volverPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Volver"
-        tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="11dp" />
+    <ImageButton
+        android:id="@+id/volverBuscarPerfil"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:background="@drawable/btnvolver"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        app:srcCompat="@drawable/btnvolver" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="357dp"
+        android:layout_height="72dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/volverBuscarPerfil">
+
+        <TextView
+            android:id="@+id/texto"
+            android:layout_width="254dp"
+            android:layout_height="48dp"
+            android:background="@drawable/barrablanca"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Nombre de usuario o mascota..." />
+
+        <ImageButton
+            android:id="@+id/botonBuscar"
+            android:layout_width="71dp"
+            android:layout_height="66dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/btnlupa"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/btnlupa" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/user2"
+        android:layout_width="120dp"
+        android:layout_height="118dp"
+        android:layout_weight="1"
+        android:background="@drawable/user"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintVertical_bias="0.221"
+        app:srcCompat="@drawable/marco" />
+
+    <ImageButton
+        android:id="@+id/pet2"
+        android:layout_width="120dp"
+        android:layout_height="118dp"
+        android:layout_marginBottom="104dp"
+        android:layout_weight="1"
+        android:background="@drawable/pata"
+
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintVertical_bias="0.975"
+        app:srcCompat="@drawable/marco" />
+
+    <ImageButton
+        android:id="@+id/user3"
+        android:layout_width="120dp"
+        android:layout_height="118dp"
+        android:layout_weight="1"
+        android:background="@drawable/user"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/user2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintVertical_bias="0.221"
+        app:srcCompat="@drawable/marco" />
+
+    <ImageButton
+        android:id="@+id/pet3"
+        android:layout_width="120dp"
+        android:layout_height="118dp"
+        android:layout_marginBottom="104dp"
+        android:layout_weight="1"
+        android:background="@drawable/pata"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/pet2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintVertical_bias="0.975"
+        app:srcCompat="@drawable/marco" />
+
+    <ImageButton
+        android:id="@+id/user1"
+        android:layout_width="120dp"
+        android:layout_height="118dp"
+        android:layout_weight="1"
+        android:background="@drawable/user"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/user2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintVertical_bias="0.221"
+        app:srcCompat="@drawable/marco" />
+
+    <ImageButton
+        android:id="@+id/pet1"
+        android:layout_width="120dp"
+        android:layout_height="118dp"
+        android:layout_marginBottom="104dp"
+        android:layout_weight="1"
+        android:background="@drawable/pata"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/pet2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintVertical_bias="0.975"
+        app:srcCompat="@drawable/marco" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

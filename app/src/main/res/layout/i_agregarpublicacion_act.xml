@@ -6,22 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".I_AgregarPublicacion">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="191dp"
-        android:layout_height="37dp"
-        android:text="Agregar publicacion view"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="148dp" />
-
     <ImageButton
         android:id="@+id/volverPublicacion"
-        android:layout_width="103dp"
-        android:layout_height="103dp"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
         android:background="@drawable/btnvolver"
         android:scaleType="centerInside"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         app:srcCompat="@drawable/btnvolver" />
+
+    <EditText
+        android:id="@+id/editTextText2"
+        style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
+        android:layout_width="289dp"
+        android:layout_height="51dp"
+        android:ems="10"
+        android:gravity="left|center_vertical"
+        android:inputType="text"
+        android:text="Descripcion..."
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="392dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

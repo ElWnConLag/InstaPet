@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +34,7 @@ public class C_Home extends AppCompatActivity {
         botonPublicacion = findViewById(R.id.AgregarPublicacion);
 
 
+
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -42,10 +42,11 @@ public class C_Home extends AppCompatActivity {
         botonAdopcion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(C_Home.this, O_AvisosAdopcion.class);
+                Intent intent = new Intent(C_Home.this, avisosAdopcion.class);
                 startActivity(intent);
             }
         });
+
         botonBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +75,8 @@ public class C_Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
 
 

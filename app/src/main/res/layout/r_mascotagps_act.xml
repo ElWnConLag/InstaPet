@@ -23,4 +23,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/btnvolver" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="172dp"
+        android:layout_height="155dp"
+        tools:layout_editor_absoluteX="119dp"
+        tools:layout_editor_absoluteY="231dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

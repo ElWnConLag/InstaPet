@@ -15,7 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class O_AvisosAdopcion extends AppCompatActivity {
+public class avisosAdopcion extends AppCompatActivity {
 
     private TextView editTextNombrePerro;
 
@@ -31,7 +31,7 @@ public class O_AvisosAdopcion extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.o_avisosadopcion_act);
+        setContentView(R.layout.activity_avisos_adopcion);
 
         Volver = findViewById(R.id.volverAdopcion);
         agregarAvisoo = findViewById(R.id.agregarAvisoo);
@@ -91,17 +91,17 @@ public class O_AvisosAdopcion extends AppCompatActivity {
         Volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(O_AvisosAdopcion.this, C_Home.class);
+                Intent intent = new Intent(avisosAdopcion.this, C_Home.class);
                 startActivity(intent);
             }
         });
         agregarAvisoo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(O_AvisosAdopcion.this, P_AgregarAviso.class);
+                Intent intent = new Intent(avisosAdopcion.this, agregarAviso.class);
                 startActivity(intent);
-                    }
-                }
+            }
+        }
 
 
         );
