@@ -77,7 +77,7 @@ public class Perfil_activity extends AppCompatActivity {
 
             }
         });
-
+        
         // Lee los datos de las mascotas
         DatabaseReference mascotaRef = database.getReference("Mascotas");
 

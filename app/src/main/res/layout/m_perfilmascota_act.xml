@@ -6,14 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".M_PerfilMascota">
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="perfilmascota"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="73dp" />
-
     <ImageButton
         android:id="@+id/volverPerfilMascota"
         android:layout_width="89dp"
@@ -23,4 +15,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/btnvolver" />
+
+
+    <Button
+        android:id="@+id/btnMostrarSeguidores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Mostrar Seguidores"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.658"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvSeguidores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnMostrarSeguidores"
+        android:layout_centerHorizontal="true"
+        android:text="Seguidores:"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.614"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.127"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

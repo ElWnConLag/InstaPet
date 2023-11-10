@@ -6,21 +6,131 @@
     android:layout_height="match_parent"
     tools:context=".L_PerfilDueno">
 
-    <TextView
-        android:id="@+id/textView9"
+    <ImageButton
+        android:id="@+id/botonSeguirPerfil"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@mipmap/botondeseguiramarillo_foreground"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="perfildueño"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="73dp" />
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.809"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/buttonseguidos"
+        android:layout_width="125dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#FFA31B"
+        android:text="Seguidos"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textIsSelectable="false"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <TextView
+        android:id="@+id/numeroDeSeguidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.813"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.074" />
 
     <ImageButton
         android:id="@+id/volverPerfilDueno"
-        android:layout_width="89dp"
-        android:layout_height="91dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:background="@drawable/btnvolver"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022"
         app:srcCompat="@drawable/btnvolver" />
+
+    <Button
+        android:id="@+id/buttonseguidores"
+        android:layout_width="125dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#FFA31B"
+        android:text="Seguidores"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textIsSelectable="false"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="315dp"
+        android:layout_height="200dp"
+        android:background="#FCD308"
+        android:fillViewport="false"
+        android:focusableInTouchMode="false"
+
+        android:foreground="@mipmap/barrarectangularamarilla_foreground"
+        android:isScrollContainer="false"
+        android:scrollbarStyle="outsideInset"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/numeroDeSeguidores"
+        android:layout_width="7dp"
+        android:layout_height="13dp"
+        android:text="0"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.075" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
