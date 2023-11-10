@@ -59,36 +59,15 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/perroNombre"
-        android:layout_width="282dp"
-        android:layout_height="49dp"
+        android:id="@+id/perroDescripcion"
+        android:layout_width="287dp"
+        android:layout_height="216dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="52dp"
-        android:text="nombre"
+        android:layout_marginTop="152dp"
+        android:text="Descripcion"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/perroImagen" />
 
-    <TextView
-        android:id="@+id/sexoPerroAviso"
-        android:layout_width="195dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="80dp"
-        android:text="sexo"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/perroNombre" />
-
-    <TextView
-        android:id="@+id/ubicacionPerro"
-        android:layout_width="228dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="116dp"
-        android:text="Ubicación"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sexoPerroAviso" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
