@@ -7,7 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.squareup.picasso.Picasso;
+
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,11 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class avisosAdopcion extends AppCompatActivity {
 
-    private TextView editTextNombrePerro;
+    private ImageView imagenPerfilPerro;
 
-    private TextView sexoPerro;
-
-    private TextView ubicacionPerro;
+    private TextView descripcionPerro;
 
     private DatabaseReference mDataBase;
     Button Volver;
@@ -35,18 +37,35 @@ public class avisosAdopcion extends AppCompatActivity {
 
         Volver = findViewById(R.id.volverAdopcion);
         agregarAvisoo = findViewById(R.id.agregarAvisoo);
-        editTextNombrePerro = (TextView) findViewById(R.id.perroNombre);
-        sexoPerro = (TextView)findViewById(R.id.sexoPerroAviso);
-        ubicacionPerro = (TextView)findViewById(R.id.ubicacionPerro);
+        imagenPerfilPerro = (ImageView) findViewById(R.id.perroImagen);
+        descripcionPerro = (TextView)findViewById(R.id.perroDescripcion);
         mDataBase = FirebaseDatabase.getInstance().getReference("DatosPerro");
 
 
-        mDataBase.child("nombrePerro").addValueEventListener(new ValueEventListener() {
+        mDataBase.child("imagenPerfil").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    String nombre = dataSnapshot.getValue().toString();
-                    editTextNombrePerro.setText("El nombre es: " + nombre);
+                    String imagenUrl = dataSnapshot.getValue().toString();
+
+                    // Carga la imagen utilizando Picasso y muestra la imagen en el ImageView
+                    Picasso.get().load(imagenUrl).into(imagenPerfilPerro);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Maneja el error si es necesario
+            }
+        });
+
+
+        mDataBase.child("descripcion").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String descripcion = dataSnapshot.getValue().toString();
+                    descripcionPerro.setText("descripcion: " + descripcion);
                 }
             }
 
@@ -55,38 +74,6 @@ public class avisosAdopcion extends AppCompatActivity {
 
             }
         });
-
-        mDataBase.child("sexo").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    String sexo = dataSnapshot.getValue().toString();
-                    sexoPerro.setText("El sexo es: " + sexo);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        mDataBase.child("ubicacion").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    String ubicacion = dataSnapshot.getValue().toString();
-                    ubicacionPerro.setText("Ubicacion: " + ubicacion);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
 
         Volver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,11 +83,11 @@ public class avisosAdopcion extends AppCompatActivity {
             }
         });
         agregarAvisoo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(avisosAdopcion.this, agregarAviso.class);
-                startActivity(intent);
-            }
+                                             @Override
+                                             public void onClick(View v) {
+                                                 Intent intent = new Intent(avisosAdopcion.this, agregarAviso.class);
+                                                 startActivity(intent);
+                                             }
         }
 
 

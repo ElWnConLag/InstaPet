@@ -45,6 +45,8 @@ public class agregarAviso extends AppCompatActivity {
 
     private StorageReference storageReference;
 
+    private EditText descripcionPerro;
+
     private static final int PICK_IMAGE_REQUEST = 1;
 
     private Uri imageUri;
@@ -60,6 +62,8 @@ public class agregarAviso extends AppCompatActivity {
         sexoPerro = findViewById(R.id.sexoPerro);
         ubicacionPerro = findViewById(R.id.ubicacionPerro);
         imagenPerfilPerro = findViewById(R.id.imagenPerfilPerro);
+        descripcionPerro = findViewById(R.id.descripcionPerro);
+
 
         // Inicializa la referencia a Firebase Realtime Database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -79,6 +83,7 @@ public class agregarAviso extends AppCompatActivity {
                 String nuevaRaza = raza_id.getText().toString();
                 String nuevoSexoPerro = sexoPerro.getText().toString();
                 String nuevaUbicacion = ubicacionPerro.getText().toString();
+                String nuevaDescripcion = descripcionPerro.getText().toString();
 
 
 
@@ -88,6 +93,7 @@ public class agregarAviso extends AppCompatActivity {
                 userData.put("raza", nuevaRaza);
                 userData.put("sexo", nuevoSexoPerro);
                 userData.put("ubicacion", nuevaUbicacion);
+                userData.put("descripcion", nuevaDescripcion);
 
                 // Actualiza los valores en la base de datos
                 myRef.updateChildren(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -211,3 +217,4 @@ public class agregarAviso extends AppCompatActivity {
         Toast.makeText(agregarAviso.this, message, Toast.LENGTH_SHORT).show();
     }
 }
+
