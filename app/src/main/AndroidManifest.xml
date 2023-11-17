@@ -6,9 +6,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/btnlupa"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/btnlupa"
         android:supportsRtl="true"
         android:theme="@style/Theme.InstaPet"
         tools:targetApi="31">
@@ -49,25 +49,13 @@
             android:name=".K_Ajustes"
             android:exported="false" />
         <activity
-            android:name=".Ajustes"
-            android:exported="false" />
-        <activity
             android:name=".J_BuscarPerfil"
-            android:exported="false" />
-        <activity
-            android:name=".O_AvisosAdopcion"
-            android:exported="false" />
-        <activity
-            android:name=".VentanaInicio"
             android:exported="false" />
         <activity
             android:name=".Perfil_activity"
             android:exported="false" />
         <activity
             android:name=".nuevaMascota"
-            android:exported="false" />
-        <activity
-            android:name=".CrearHilo"
             android:exported="false" />
         <activity
             android:name=".B_Register"
