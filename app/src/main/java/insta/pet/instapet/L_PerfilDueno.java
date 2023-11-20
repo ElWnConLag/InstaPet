@@ -1,8 +1,10 @@
 package insta.pet.instapet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +28,7 @@ public class L_PerfilDueno extends AppCompatActivity {
 
     private TextView nombreperfil1;
     private ImageView imagenperfil1;
+    ImageButton volverPerfilDueno;
     private Button botonSeguirPerfil;
     private DatabaseReference followReference;
     private DatabaseReference userReference;
@@ -69,6 +72,15 @@ public class L_PerfilDueno extends AppCompatActivity {
         nombreperfil1 = findViewById(R.id.textViewUsername);
         imagenperfil1 = findViewById(R.id.imageView3);
         botonSeguirPerfil = findViewById(R.id.botonSeguirPerfil);
+        volverPerfilDueno = findViewById(R.id.volverPerfilDueno);
+
+        volverPerfilDueno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(L_PerfilDueno.this, J_BuscarPerfil.class);
+                startActivity(intent);
+            }
+        });
 
         followReference = FirebaseDatabase.getInstance().getReference().child("follows");
         userReference = FirebaseDatabase.getInstance().getReference().child("users");
@@ -149,16 +161,6 @@ public class L_PerfilDueno extends AppCompatActivity {
         userReference.child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-
-                if (user != null) {
-                    int followersCount = user.getFollowers();
-                    int followingCount = user.getFollowing();
-
-                    // Ejemplo: Actualizar TextViews
-                    // followersTextView.setText("Seguidores: " + followersCount);
-                    // followingTextView.setText("Siguiendo: " + followingCount);
-                }
             }
 
             @Override
@@ -183,11 +185,8 @@ public class L_PerfilDueno extends AppCompatActivity {
                     nombreperfil1.setText(nombreUsuario);
 
                     List<String> usuarios = new ArrayList<>();
-
-                    // Resto del código...
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Manejar errores de lectura de la base de datos si es necesario
