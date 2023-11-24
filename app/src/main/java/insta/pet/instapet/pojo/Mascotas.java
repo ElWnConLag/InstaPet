@@ -1,16 +1,16 @@
 package insta.pet.instapet.pojo;
 
-public class Mascota {
+public class Mascotas {
 
     private String nombre;
 
 
-    public Mascota() {
+    public Mascotas() {
     }
 
 
 
-    public Mascota(String nombre) {
+    public Mascotas(String nombre) {
 
         this.nombre = nombre;
 

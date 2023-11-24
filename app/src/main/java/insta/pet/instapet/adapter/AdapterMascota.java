@@ -7,29 +7,33 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import insta.pet.instapet.Mascota;
+import insta.pet.instapet.Mascotas;
 import insta.pet.instapet.R;
 
 public class AdapterMascota extends BaseAdapter {
 
-    private List<Mascota> mascotaList;
+    private List<Mascotas> mascotasList;
     private LayoutInflater inflater;
 
-    public AdapterMascota(Context context, List<Mascota> mascotaList) {
-        this.mascotaList = mascotaList;
+    public AdapterMascota(Context context, List<Mascotas> mascotasList) {
+        this.mascotasList = mascotasList;
         this.inflater = LayoutInflater.from(context);
+    }
+
+    public AdapterMascota(ArrayList<Mascotas> milista) {
     }
 
     @Override
     public int getCount() {
-        return mascotaList.size();
+        return mascotasList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mascotaList.get(position);
+        return mascotasList.get(position);
     }
 
     @Override
@@ -54,7 +58,7 @@ public class AdapterMascota extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Mascota ms = mascotaList.get(position);
+        Mascotas ms = mascotasList.get(position);
 
 
         holder.tv_nombre.setText(ms.getNombre());

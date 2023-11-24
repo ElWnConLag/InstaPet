@@ -64,7 +64,7 @@
             android:name=".Perfil_activity"
             android:exported="false" />
         <activity
-            android:name=".nuevaMascota"
+            android:name=".nuevaMascotas"
             android:exported="false" />
         <activity
             android:name=".B_Register"
