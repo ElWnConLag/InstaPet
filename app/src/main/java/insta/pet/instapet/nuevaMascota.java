@@ -44,6 +44,16 @@ public class nuevaMascota extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nueva_mascota_perfil);
 
+        View volverNuevaMascota = findViewById(R.id.volverNuevaMascota);
+
+        volverNuevaMascota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(nuevaMascota.this, Perfil_activity.class);
+                startActivity(intent);
+            }
+        });
+
         // Inicializa los EditText donde el usuario ingresa los datos a guardar
         editTextNombreUsuario = findViewById(R.id.editTextNombreUsuario);
         correo_id = findViewById(R.id.correo_id);

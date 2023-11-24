@@ -12,6 +12,20 @@
     "
 
 
+    <ImageButton
+        android:id="@+id/volverNuevaMascota"
+        android:layout_width="73dp"
+        android:layout_height="73dp"
+        android:background="@drawable/btnvolver"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024"
+        app:srcCompat="@drawable/btnvolver" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"

@@ -109,5 +109,11 @@ public class Perfil_activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+    }
+    public void redirectToSecondLayout(View view) {
+        Intent intent = new Intent(this, nuevaMascota.class);
+        startActivity(intent);
     }
 }
