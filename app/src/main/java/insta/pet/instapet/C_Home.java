@@ -50,7 +50,7 @@ public class C_Home extends AppCompatActivity {
         botonBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(C_Home.this, J_BuscarPerfil.class);
+                Intent intent = new Intent(C_Home.this, BuscadorMascotas.class);
                 startActivity(intent);
             }
         });

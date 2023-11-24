@@ -1,6 +1,6 @@
 package insta.pet.instapet;
 
-public class Mascota {
+public class Mascotas {
     private String nombre;
     private String raza;
     private String sexo;
@@ -8,7 +8,12 @@ public class Mascota {
     private String imagenUrl; // Agrega un campo para la URL de la imagen
 
     // Constructor
-    public Mascota(String nombre, String raza, String sexo, String tamaño) {
+
+
+    public Mascotas() {
+    }
+
+    public Mascotas(String nombre, String raza, String sexo, String tamaño) {
         this.nombre = nombre;
         this.raza = raza;
         this.sexo = sexo;

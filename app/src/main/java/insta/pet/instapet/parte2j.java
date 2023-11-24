@@ -77,7 +77,7 @@ public class parte2j extends AppCompatActivity {
                 String tamaño = tamañoMascota.getText().toString();
 
                 // Crea una instancia de la clase Mascota con los datos
-                Mascota nuevaMascota = new Mascota(nombre, raza, sexo, tamaño);
+                Mascotas nuevaMascotas = new Mascotas(nombre, raza, sexo, tamaño);
 
                 // Sube la imagen a Firebase Storage y guarda la URL en la mascota
                 if (imageUri != null) {
@@ -92,11 +92,11 @@ public class parte2j extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     // Asigna la URL de la imagen a nuevaMascota
-                                    nuevaMascota.setImagenUrl(uri.toString());
+                                    nuevaMascotas.setImagenUrl(uri.toString());
 
                                     // Guarda la mascota en Firebase Realtime Database, incluyendo la URL de la imagen
                                     DatabaseReference newMascotaRef = myRef.push();
-                                    newMascotaRef.setValue(nuevaMascota);
+                                    newMascotaRef.setValue(nuevaMascotas);
 
                                     // Regresa a la actividad anterior o realiza otras acciones si es necesario
                                     Intent intent = new Intent(parte2j.this, Perfil_activity.class);
