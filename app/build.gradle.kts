@@ -47,12 +47,15 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-auth:21.0.1")
 
-
-
     implementation("com.google.firebase:firebase-storage:20.2.1")
     implementation ("com.squareup.picasso:picasso:2.71828")
     implementation("com.google.firebase:firebase-database")
     implementation("com.squareup.picasso:picasso:2.8")
+
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
+    implementation ("androidx.cardview:cardview:1.0.0")
+
+
 
 
 
