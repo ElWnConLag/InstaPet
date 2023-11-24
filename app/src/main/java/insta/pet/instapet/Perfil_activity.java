@@ -99,5 +99,15 @@ public class Perfil_activity extends AppCompatActivity {
 
             }
         });
+
+        View volverPerfilActivity = findViewById(R.id.volverPerfilActivity);
+
+        volverPerfilActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Perfil_activity.this, C_Home.class);
+                startActivity(intent);
+            }
+        });
     }
 }

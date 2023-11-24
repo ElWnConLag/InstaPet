@@ -95,4 +95,8 @@ public class C_Home extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    public void redirectToSecondLayout(View view) {
+        Intent intent = new Intent(this, Perfil_activity.class);
+        startActivity(intent);
+    }
 }
