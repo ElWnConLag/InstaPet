@@ -5,59 +5,49 @@
     android:id="@+id/activity_perfil"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/perfilduenofondo"
     tools:context=".Perfil_activity">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#FCD308"
         android:text="seguidores"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.369"
+        app:layout_constraintHorizontal_bias="0.378"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#FBD208"
         android:text="seguidos"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintHorizontal_bias="0.815"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/volverPerfilActivity"
-        android:layout_width="73dp"
-        android:layout_height="73dp"
-        android:background="@drawable/btnvolver"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.017"
+        android:id="@+id/backButton"
+        android:layout_width="75dp"
+        android:layout_height="71dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="Botón de retroceso"
+        android:scaleType="fitCenter"
+        android:src="@drawable/volver"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024"
-        app:srcCompat="@drawable/btnvolver" />
+        tools:layout_editor_absoluteX="-10dp"
+        tools:layout_editor_absoluteY="-11dp" />
+
 
     <View
         android:id="@+id/orangeBox"
         android:layout_width="297dp"
         android:layout_height="184dp"
-        android:background="@drawable/rectanguloamarilloparascrollbar"
+        android:background="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,13 +57,11 @@
 
     <TextView
         android:id="@+id/masctoasname"
-        android:layout_width="84dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="124dp"
+        android:layout_width="75dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="120dp"
         android:text="MASCOTAS"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,76 +69,71 @@
         android:id="@+id/imagenmascota1"
         android:layout_width="78dp"
         android:layout_height="75dp"
+        android:layout_marginStart="168dp"
         android:layout_marginTop="148dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/nombrehilomascota11"
-        android:layout_width="77dp"
-        android:layout_height="25dp"
+        android:layout_width="75dp"
+        android:layout_height="20dp"
         android:layout_marginStart="168dp"
         android:layout_marginTop="236dp"
         android:text=""
-        android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/boton_hilomascota"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="272dp"
-        android:backgroundTint="#F9A514"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="268dp"
         android:text="+"
-        android:textColor="#FCD308"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/orangeBox1"
+        android:layout_width="363dp"
+        android:layout_height="275dp"
+        android:background="#00BCD4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
         android:layout_marginTop="488dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textViewUsername"
-        android:layout_width="199dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="624dp"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="628dp"
         android:text=""
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/editarperfil_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#FFEB3B"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="664dp"
         android:text="editar perfil"
-        android:textColor="#000000"
-        android:textColorHighlight="#FFC107"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

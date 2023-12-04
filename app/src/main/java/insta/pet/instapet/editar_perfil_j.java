@@ -1,4 +1,5 @@
 package insta.pet.instapet;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -28,7 +31,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class nuevaMascota extends AppCompatActivity {
+public class editar_perfil_j extends AppCompatActivity {
 
     private EditText editTextNombreUsuario;
     private EditText correo_id;
@@ -42,80 +45,68 @@ public class nuevaMascota extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nueva_mascota_perfil);
+        setContentView(R.layout.editar_pefil);
 
-        View volverNuevaMascota = findViewById(R.id.volverNuevaMascota);
-
-        volverNuevaMascota.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(nuevaMascota.this, Perfil_activity.class);
-                startActivity(intent);
-            }
-        });
-
-        // Inicializa los EditText donde el usuario ingresa los datos a guardar
         editTextNombreUsuario = findViewById(R.id.editTextNombreUsuario);
         correo_id = findViewById(R.id.correo_id);
         editTextNacionalidad = findViewById(R.id.editTextNacionalidad);
         imageViewProfile = findViewById(R.id.imageViewProfile);
 
-        // Inicializa la referencia a Firebase Realtime Database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("DatosUsuario");
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        // Inicializa la referencia a Firebase Storage
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference("profile_images");
+        if (currentUser != null) {
+            String uid = currentUser.getUid();
 
-        // Botón "Guardar"
-        Button guardarButton = findViewById(R.id.button2);
-        guardarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Obtiene los textos ingresados en los EditText
-                String nuevoNombreUsuario = editTextNombreUsuario.getText().toString();
-                String nuevoCorreo = correo_id.getText().toString();
-                String nuevaNacionalidad = editTextNacionalidad.getText().toString();
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            myRef = database.getReference("DatosUsuario");
 
-                // Crea un mapa para almacenar los datos
-                Map<String, Object> userData = new HashMap<>();
-                userData.put("nombre", nuevoNombreUsuario);
-                userData.put("correo", nuevoCorreo);
-                userData.put("nacionalidad", nuevaNacionalidad);
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            storageReference = storage.getReference("profile_images");
 
-                // Actualiza los valores en la base de datos
-                myRef.updateChildren(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            // Sube la imagen de perfil si está seleccionada
-                            if (imageUri != null) {
-                                uploadProfileImage();
+            // Botón "Guardar"
+            Button guardarButton = findViewById(R.id.button2);
+            guardarButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String nuevoNombreUsuario = editTextNombreUsuario.getText().toString();
+                    String nuevoCorreo = correo_id.getText().toString();
+                    String nuevaNacionalidad = editTextNacionalidad.getText().toString();
+
+                    Map<String, Object> userData = new HashMap<>();
+                    userData.put("nombre", nuevoNombreUsuario);
+                    userData.put("correo", nuevoCorreo);
+                    userData.put("nacionalidad", nuevaNacionalidad);
+
+                    myRef.child(uid).updateChildren(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                if (imageUri != null) {
+                                    uploadProfileImage(uid);
+                                } else {
+                                    showToastAndNavigate("Cambios guardados correctamente");
+                                }
                             } else {
-                                // Muestra un mensaje o realiza otras acciones si es necesario
-                                showToastAndNavigate("Cambios guardados correctamente");
+                                showToast("Error al guardar los cambios");
                             }
-                        } else {
-                            // Error al actualizar los datos en la base de datos
-                            showToast("Error al guardar los cambios");
                         }
-                    }
-                });
-            }
-        });
+                    });
+                }
+            });
 
-        // Botón "Seleccionar Imagen de Perfil"
-        Button selectImageBtn = findViewById(R.id.selectImageBtn);
-        selectImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openImageChooser();
-            }
-        });
+            Button selectImageBtn = findViewById(R.id.selectImageBtn);
+            selectImageBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    openImageChooser();
+                }
+            });
+        } else {
+            // Manejo del caso en el que el usuario no está autenticado.
+        }
     }
 
-    // Método para abrir el selector de imágenes
     private void openImageChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -123,7 +114,6 @@ public class nuevaMascota extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Seleccionar una imagen"), PICK_IMAGE_REQUEST);
     }
 
-    // Método para manejar el resultado de la selección de imagen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -132,10 +122,7 @@ public class nuevaMascota extends AppCompatActivity {
             imageUri = data.getData();
 
             try {
-                // Convierte la imagen seleccionada a un objeto Bitmap
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-
-                // Muestra la imagen en el ImageView
                 imageViewProfile.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -143,10 +130,9 @@ public class nuevaMascota extends AppCompatActivity {
         }
     }
 
-    // Método para cargar la imagen de perfil en Firebase Storage
-    private void uploadProfileImage() {
+    private void uploadProfileImage(String uid) {
         if (imageUri != null) {
-            StorageReference imageRef = storageReference.child("profile_image.jpg");
+            StorageReference imageRef = storageReference.child(uid + "_profile_image.jpg");
 
             imageViewProfile.setDrawingCacheEnabled(true);
             imageViewProfile.buildDrawingCache();
@@ -160,25 +146,18 @@ public class nuevaMascota extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     if (task.isSuccessful()) {
-                        // La imagen se cargó exitosamente, obtén la URL de descarga
                         imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
                                 String imageUrl = uri.toString();
 
-                                // Actualiza la URL de la imagen en la base de datos
-                                // Actualiza la URL de la imagen en la base de datos
-                                myRef.child("imagenPerfil").setValue(imageUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                myRef.child(uid).child("imagenPerfil").setValue(imageUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            // Carga y muestra la imagen de perfil desde la URL de Firebase Storage
                                             Picasso.get().load(imageUrl).into(imageViewProfile);
-
-                                            // Muestra un mensaje o realiza otras acciones si es necesario
                                             showToastAndNavigate("Cambios guardados correctamente");
                                         } else {
-                                            // Error al actualizar la URL de la imagen en la base de datos
                                             showToast("Error al guardar la imagen");
                                         }
                                     }
@@ -187,7 +166,6 @@ public class nuevaMascota extends AppCompatActivity {
                             }
                         });
                     } else {
-                        // Error al cargar la imagen
                         showToast("Error al subir la imagen");
                     }
                 }
@@ -195,21 +173,20 @@ public class nuevaMascota extends AppCompatActivity {
         }
     }
 
-    // Método para mostrar un mensaje Toast y navegar a la actividad anterior
     private void showToastAndNavigate(String message) {
-        Toast.makeText(nuevaMascota.this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(editar_perfil_j.this, message, Toast.LENGTH_SHORT).show();
 
-        // Regresa a la actividad anterior (activity_perfil_main.xml)
-        Intent intent = new Intent(nuevaMascota.this, Perfil_activity.class);
+        Intent intent = new Intent(editar_perfil_j.this, Perfil_activity.class);
         startActivity(intent);
         finish(); // Cierra la actividad actual
     }
 
-    // Método para mostrar un mensaje Toast
     private void showToast(String message) {
-        Toast.makeText(nuevaMascota.this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(editar_perfil_j.this, message, Toast.LENGTH_SHORT).show();
     }
 }
+
+
 
 
 

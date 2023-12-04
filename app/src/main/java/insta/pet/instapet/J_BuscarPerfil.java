@@ -33,13 +33,10 @@ public class J_BuscarPerfil extends AppCompatActivity {
                 redirectToSecondLayout(v);
             }
         });
-
-
     }
 
     public void redirectToSecondLayout(View view) {
         Intent intent = new Intent(this, L_PerfilDueno.class);
         startActivity(intent);
     }
-
 }

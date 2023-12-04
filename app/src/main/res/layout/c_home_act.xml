@@ -116,7 +116,10 @@ tools:context=".C_Home">
 
     </LinearLayout>
 
+
+
     <LinearLayout
+        android:id="@+id/linearLayoutt"
         android:layout_width="232dp"
         android:layout_height="232dp"
         android:background="@drawable/rblanco"

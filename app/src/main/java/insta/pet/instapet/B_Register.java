@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +14,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,6 +30,7 @@ public class B_Register extends AppCompatActivity {
     private TextView mTextViewRespuestaR;
 
     private FirebaseAuth mAuth;
+    private DatabaseReference usersRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class B_Register extends AppCompatActivity {
         mTextViewRespuestaR = findViewById(R.id.textViewRespuestaR);
 
         mAuth = FirebaseAuth.getInstance();
+        usersRef = FirebaseDatabase.getInstance().getReference("Usuarios");
 
         mButtonRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +73,12 @@ public class B_Register extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    // Se ha creado correctamente, ahora guarda la información adicional en la base de datos
+                    FirebaseUser currentUser = mAuth.getCurrentUser();
+                    if (currentUser != null) {
+                        guardarInformacionUsuario(currentUser.getUid(), email);
+                    }
+
                     mostrarMensaje("Cuenta creada con éxito.");
                     mTextViewRespuestaR.setTextColor(Color.GREEN);
                 } else {
@@ -77,6 +87,11 @@ public class B_Register extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void guardarInformacionUsuario(String userId, String email) {
+        // Guarda información adicional del usuario en la base de datos (por ejemplo, Realtime Database)
+        usersRef.child(userId).setValue(new Usuario(email));
     }
 
     private boolean emailValido(String email) {
@@ -90,4 +105,5 @@ public class B_Register extends AppCompatActivity {
         mTextViewRespuestaR.setText(mensaje);
     }
 }
+
 
