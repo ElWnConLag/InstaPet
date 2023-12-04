@@ -60,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
         mTextViewRespuesta = findViewById(R.id.textViewRespuesta);
         mTextViewIrRegistrar = findViewById(R.id.textViewIrRegistrar);
 
-        mqttHandler = new MqttHandler();
-        mqttHandler.connect(BROKER_URL, CLIENT_ID); //MQTT
-        publishMessage("user", "Usuario agregado al registro");
+            mqttHandler = new MqttHandler();
+            mqttHandler.connect(BROKER_URL, CLIENT_ID); //MQTT
+            publishMessage("user", "Usuario agregado al registro");
 
         mAuth = FirebaseAuth.getInstance();
 

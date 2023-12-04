@@ -37,11 +37,12 @@ public class avisosAdopcion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avisos_adopcion);
 
-        Volver = findViewById(R.id.volverAdopcion);
+
         agregarAvisoo = findViewById(R.id.agregarAvisoo);
         imagenPerfilPerro = (ImageView) findViewById(R.id.perroImagen);
         descripcionPerro = (TextView)findViewById(R.id.perroDescripcion);
         mDataBase = FirebaseDatabase.getInstance().getReference("DatosPerro");
+        Volver = findViewById(R.id.volverAdopcion);
 
 
         mDataBase.child("imagenPerfil").addValueEventListener(new ValueEventListener() {
@@ -67,7 +68,7 @@ public class avisosAdopcion extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     String descripcion = dataSnapshot.getValue().toString();
-                    descripcionPerro.setText("descripcion: " + descripcion);
+                    descripcionPerro.setText("" + descripcion);
                 }
             }
 
