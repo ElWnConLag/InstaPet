@@ -1,5 +1,6 @@
 package insta.pet.instapet;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -7,11 +8,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+import insta.pet.instapet.adapter.AdapterMascota;
+import insta.pet.instapet.adapter.AdapterPublicaciones;
+import insta.pet.instapet.pojo.Publicaciones;
 
 public class C_Home extends AppCompatActivity {
+    DatabaseReference ref;
+    ArrayList<Publicaciones> listP;
+    ListView listView;
+    AdapterPublicaciones adapter;
 
     ImageButton botonAdopcion;
     ImageButton botonBuscar;
@@ -26,6 +43,12 @@ public class C_Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.c_home_act);
+
+        ref = FirebaseDatabase.getInstance().getReference().child("Publicaciones");
+        listView = findViewById(R.id.listViewP);
+        listP = new ArrayList<>();
+        adapter = new AdapterPublicaciones(this, listP);
+        listView.setAdapter(adapter);
 
         botonAdopcion = findViewById(R.id.btnAdoptar);
         botonBuscar = findViewById(R.id.btnBuscar);
@@ -73,6 +96,24 @@ public class C_Home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(C_Home.this, I_AgregarPublicacion.class);
                 startActivity(intent);
+            }
+        });
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                        Mascotas ms = snapshot.getValue(Mascotas.class);
+                        listP.add(ms);
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 
