@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,6 +22,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class A_Login extends AppCompatActivity {
+    private static final String BROKER_URL = "tcp://your-broker-url:1883";
+    private static final String CLIENT_ID = "your_client_id";
+
+    private MqttHandler mqttHandler;
+
 
     EditText mEditTextEmail;
     EditText mEditTextPass;
@@ -43,6 +49,10 @@ public class A_Login extends AppCompatActivity {
         mButtonInicio = findViewById(R.id.btnInicio);
         mTextViewRespuesta = findViewById(R.id.textViewRespuesta);
         mTextViewIrRegistrar = findViewById(R.id.textViewIrRegistrar);
+
+        mqttHandler = new MqttHandler();
+        mqttHandler.connect(BROKER_URL, CLIENT_ID); //MQTT
+        publishMessage("user", "Usuario agregado al registro");
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -107,5 +117,25 @@ public class A_Login extends AppCompatActivity {
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    @Override                           //MQTT
+    protected void onDestroy() {
+        mqttHandler.disconnect();
+        super.onDestroy();
+
+
+    }
+    private void publishMessage(String topic, String messege){
+
+        Toast.makeText(this, "Mensaje a Publicar:"+messege, Toast.LENGTH_SHORT).show();
+        mqttHandler.publish(topic,messege);
+    }
+
+    private void subscribeTopic(String topic){
+        Toast.makeText(this, "Subscribing topic" + topic, Toast.LENGTH_SHORT).show();
+        mqttHandler.subscribe(topic);
+
+
     }
 }

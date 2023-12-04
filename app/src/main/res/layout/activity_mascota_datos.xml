@@ -52,7 +52,7 @@
         android:layout_height="43dp"
         android:layout_marginStart="180dp"
         android:layout_marginTop="328dp"
-         android:textSize="24dp"
+        android:textSize="24dp"
         android:background="@drawable/img_4"
         android:text=""
 
