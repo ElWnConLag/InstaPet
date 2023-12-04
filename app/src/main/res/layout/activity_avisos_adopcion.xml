@@ -4,20 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_10"
     tools:context=".avisosAdopcion">
 
 
     <View
         android:id="@+id/orangeBox1"
-        android:layout_width="368dp"
-        android:layout_height="590dp"
-        android:background="@android:color/holo_orange_light"
+        android:layout_width="408dp"
+        android:layout_height="232dp"
+        android:background="@drawable/img_3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.0"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.778" />
+        app:layout_constraintVertical_bias="0.727" />
 
     <Button
         android:id="@+id/volverAdopcion"
@@ -43,28 +45,40 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginTop="60dp"
-        android:text="Avisos de adopción"
+        android:text=""
         android:textSize="29sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/perroImagen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avisosMascotas"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
+        android:id="@+id/lol"
+        android:layout_width="199dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/img_9"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/perroImagen" />
+
+    <TextView
         android:id="@+id/perroDescripcion"
-        android:layout_width="287dp"
-        android:layout_height="216dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="152dp"
-        android:text="Descripcion"
+        android:layout_width="290dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="240dp"
+        android:background="@drawable/img_4"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/perroImagen" />
@@ -73,8 +87,8 @@
         android:id="@+id/detalles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="616dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="628dp"
         android:text="detalles"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/volverAdopcion" />

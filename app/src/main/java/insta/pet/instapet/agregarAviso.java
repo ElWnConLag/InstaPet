@@ -51,12 +51,13 @@ public class agregarAviso extends AppCompatActivity {
 
     private Uri imageUri;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_aviso);
 
-        // Inicializa los EditText donde el usuario ingresa los datos a guardar
         editTextNombrePerro = findViewById(R.id.editTextNombrePerro);
         raza_id= findViewById(R.id.raza_id);
         sexoPerro = findViewById(R.id.sexoPerro);
@@ -64,59 +65,50 @@ public class agregarAviso extends AppCompatActivity {
         imagenPerfilPerro = findViewById(R.id.imagenPerfilPerro);
         descripcionPerro = findViewById(R.id.descripcionPerro);
 
-
-        // Inicializa la referencia a Firebase Realtime Database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference("DatosPerro");
 
-        // Inicializa la referencia a Firebase Storage
         FirebaseStorage storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference("imagenAvisos");
 
-        // Botón "Guardar"
         Button guardarButton = findViewById(R.id.botonGuardar);
         guardarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Obtiene los textos ingresados en los EditText
                 String nuevoNombrePerro = editTextNombrePerro.getText().toString();
                 String nuevaRaza = raza_id.getText().toString();
                 String nuevoSexoPerro = sexoPerro.getText().toString();
                 String nuevaUbicacion = ubicacionPerro.getText().toString();
                 String nuevaDescripcion = descripcionPerro.getText().toString();
 
+                if (nuevoNombrePerro.isEmpty() || nuevaRaza.isEmpty() || nuevoSexoPerro.isEmpty() || nuevaUbicacion.isEmpty() || nuevaDescripcion.isEmpty()) {
+                    showToast("Debes rellenar todos los campos");
+                } else {
+                    Map<String, Object> userData = new HashMap<>();
+                    userData.put("nombrePerro", nuevoNombrePerro);
+                    userData.put("raza", nuevaRaza);
+                    userData.put("sexo", nuevoSexoPerro);
+                    userData.put("ubicacion", nuevaUbicacion);
+                    userData.put("descripcion", nuevaDescripcion);
 
-
-                // Crea un mapa para almacenar los datos
-                Map<String, Object> userData = new HashMap<>();
-                userData.put("nombrePerro", nuevoNombrePerro);
-                userData.put("raza", nuevaRaza);
-                userData.put("sexo", nuevoSexoPerro);
-                userData.put("ubicacion", nuevaUbicacion);
-                userData.put("descripcion", nuevaDescripcion);
-
-                // Actualiza los valores en la base de datos
-                myRef.updateChildren(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            // Sube la imagen de perfil si está seleccionada
-                            if (imageUri != null) {
-                                uploadProfileImage();
+                    myRef.updateChildren(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                if (imageUri != null) {
+                                    uploadProfileImage();
+                                } else {
+                                    showToastAndNavigate("Aviso creado correctamente");
+                                }
                             } else {
-                                // Muestra un mensaje o realiza otras acciones si es necesario
-                                showToastAndNavigate("Aviso creado correctamente");
+                                showToast("Error al guardar los cambios");
                             }
-                        } else {
-                            // Error al actualizar los datos en la base de datos
-                            showToast("Error al guardar los cambios");
                         }
-                    }
-                });
+                    });
+                }
             }
         });
 
-        // Botón "Seleccionar Imagen de Perfil"
         Button seleccionarImage = findViewById(R.id.seleccionarImage);
         seleccionarImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +118,6 @@ public class agregarAviso extends AppCompatActivity {
         });
     }
 
-    // Método para abrir el selector de imágenes
     private void openImageChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -134,7 +125,6 @@ public class agregarAviso extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Seleccionar una imagen"), PICK_IMAGE_REQUEST);
     }
 
-    // Método para manejar el resultado de la selección de imagen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -143,10 +133,7 @@ public class agregarAviso extends AppCompatActivity {
             imageUri = data.getData();
 
             try {
-                // Convierte la imagen seleccionada a un objeto Bitmap
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-
-                // Muestra la imagen en el ImageView
                 imagenPerfilPerro.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -154,7 +141,6 @@ public class agregarAviso extends AppCompatActivity {
         }
     }
 
-    // Método para cargar la imagen de perfil en Firebase Storage
     private void uploadProfileImage() {
         if (imageUri != null) {
             StorageReference imageRef = storageReference.child("perros.jpg");
@@ -171,25 +157,18 @@ public class agregarAviso extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     if (task.isSuccessful()) {
-                        // La imagen se cargó exitosamente, obtén la URL de descarga
                         imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
                                 String imageUrl = uri.toString();
 
-                                // Actualiza la URL de la imagen en la base de datos
-                                // Actualiza la URL de la imagen en la base de datos
                                 myRef.child("imagenPerfil").setValue(imageUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            // Carga y muestra la imagen de perfil desde la URL de Firebase Storage
                                             Picasso.get().load(imageUrl).into(imagenPerfilPerro);
-
-                                            // Muestra un mensaje o realiza otras acciones si es necesario
                                             showToastAndNavigate("Cambios guardados correctamente");
                                         } else {
-                                            // Error al actualizar la URL de la imagen en la base de datos
                                             showToast("Error al guardar la imagen");
                                         }
                                     }
@@ -198,7 +177,6 @@ public class agregarAviso extends AppCompatActivity {
                             }
                         });
                     } else {
-                        // Error al cargar la imagen
                         showToast("Error al subir la imagen");
                     }
                 }
@@ -206,15 +184,19 @@ public class agregarAviso extends AppCompatActivity {
         }
     }
 
-    // Método para mostrar un mensaje Toast y navegar a la actividad anterior
+
+
     private void showToastAndNavigate(String message) {
         Toast.makeText(agregarAviso.this, message, Toast.LENGTH_SHORT).show();
-
     }
 
-    // Método para mostrar un mensaje Toast
     private void showToast(String message) {
         Toast.makeText(agregarAviso.this, message, Toast.LENGTH_SHORT).show();
     }
+
+
+
+
+
 }
 

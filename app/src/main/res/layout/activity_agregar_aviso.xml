@@ -112,8 +112,8 @@
         android:id="@+id/botonGuardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="264dp"
-        android:layout_marginTop="664dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="672dp"
 
         android:text="Guardar"
 
@@ -160,6 +160,18 @@
         android:layout_marginTop="608dp"
         android:background="@drawable/img_4"
         android:hint=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/volver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="664dp"
+
+        android:text="Volver"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
