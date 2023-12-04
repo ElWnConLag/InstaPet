@@ -90,8 +90,6 @@ public class avisosAdopcion extends AppCompatActivity {
                                                  Intent intent = new Intent(avisosAdopcion.this, agregarAviso.class);
                                                  startActivity(intent);
                                              }
-        }
-                                            }
                                          }
 
 
@@ -114,5 +112,3 @@ public class avisosAdopcion extends AppCompatActivity {
 
 
 }
-
-

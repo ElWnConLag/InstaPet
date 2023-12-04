@@ -21,22 +21,10 @@
             android:name=".mascotaDatos"
             android:exported="false" />
         <activity
-            android:name=".infoMascota"
-            android:exported="false" />
-        <activity
             android:name=".agregarAviso"
-            android:exported="false" />
-        <activity
-            android:name=".Ajustes"
-            android:exported="false" />
-        <activity
-            android:name=".buscarPerfil"
             android:exported="false" />
         <activity
             android:name=".avisosAdopcion"
-            android:exported="false" />
-        <activity
-            android:name=".agregarAviso"
             android:exported="false" />
         <activity
             android:name=".L_PerfilDueno"

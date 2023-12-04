@@ -120,18 +120,12 @@ public class A_Login extends AppCompatActivity {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
-}
-
-
     @Override                           //MQTT
     protected void onDestroy() {
         mqttHandler.disconnect();
         super.onDestroy();
-
-
     }
     private void publishMessage(String topic, String messege){
-
         Toast.makeText(this, "Mensaje a Publicar:"+messege, Toast.LENGTH_SHORT).show();
         mqttHandler.publish(topic,messege);
     }
@@ -142,5 +136,9 @@ public class A_Login extends AppCompatActivity {
 
 
     }
-
 }
+
+
+
+
+
