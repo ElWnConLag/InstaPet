@@ -53,6 +53,7 @@ public class agregarAviso extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +65,7 @@ public class agregarAviso extends AppCompatActivity {
         ubicacionPerro = findViewById(R.id.ubicacionPerro);
         imagenPerfilPerro = findViewById(R.id.imagenPerfilPerro);
         descripcionPerro = findViewById(R.id.descripcionPerro);
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference("DatosPerro");
@@ -107,6 +109,8 @@ public class agregarAviso extends AppCompatActivity {
                     });
                 }
             }
+
+
         });
 
         Button seleccionarImage = findViewById(R.id.seleccionarImage);
@@ -124,6 +128,9 @@ public class agregarAviso extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Seleccionar una imagen"), PICK_IMAGE_REQUEST);
     }
+
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -186,6 +193,7 @@ public class agregarAviso extends AppCompatActivity {
 
 
 
+
     private void showToastAndNavigate(String message) {
         Toast.makeText(agregarAviso.this, message, Toast.LENGTH_SHORT).show();
     }
@@ -199,4 +207,3 @@ public class agregarAviso extends AppCompatActivity {
 
 
 }
-
