@@ -8,16 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-import com.google.firebase.database.ChildEventListener;
-import androidx.annotation.Nullable;
 
 public class Perfil_activity extends AppCompatActivity {
 
@@ -32,28 +28,40 @@ public class Perfil_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_main);
 
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        String uid = currentUser.getUid();
 
         Button editarPerfilButton = findViewById(R.id.editarperfil_bt);
         editarPerfilButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Perfil_activity.this, editar_perfil_j.class);
-                startActivity(intent);
+                // Crea un Intent para abrir la actividad "nuevaMascota"
+                Intent intent = new Intent(Perfil_activity.this, nuevaMascota.class);
+                startActivity(intent); // Inicia la nueva actividad
             }
         });
 
+
+        Button botonHiloMascota = findViewById(R.id.boton_hilomascota);
+        botonHiloMascota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Crea un Intent para abrir la actividad "parte2jerson"
+                Intent intent = new Intent(Perfil_activity.this, parte2j.class);
+                startActivity(intent); // Inicia la nueva actividad
+            }
+        });
+
+        // Obtiene la referencia a los elementos de la mascota en activity_perfil_main.xml
         imagenmascota1 = findViewById(R.id.imagenmascota1);
         nombreMascota1 = findViewById(R.id.nombrehilomascota11);
         imagenperfil1 = findViewById(R.id.imageView4);
         nombreperfil1 = findViewById(R.id.textViewUsername);
 
+        // Inicializa la referencia a Firebase Realtime Database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference("DatosUsuario");
 
-        myRef.child(uid).addValueEventListener(new ValueEventListener() {
+        // Lee los datos del nombre de usuario y la URL de la imagen desde la base de datos
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -66,52 +74,46 @@ public class Perfil_activity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Manejar errores si es necesario
+
             }
         });
+        
+        // Lee los datos de las mascotas
+        DatabaseReference mascotaRef = database.getReference("Mascotas");
 
-        DatabaseReference mascotaRef = database.getReference("Mascotas").child(uid);
-
-        mascotaRef.addChildEventListener(new ChildEventListener() {
+        mascotaRef.orderByKey().limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
-                String nombreMascota = dataSnapshot.child("nombre").getValue(String.class);
-                String imagenMascota = dataSnapshot.child("imagenUrl").getValue(String.class);
-
-                // Actualiza la interfaz de usuario con la última mascota
-                Picasso.get().load(imagenMascota).into(imagenmascota1);
-                nombreMascota1.setText(nombreMascota);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
-                // Este método se llama cuando hay cambios en las mascotas
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                // Este método se llama cuando se elimina una mascota
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
-                // Este método se llama cuando una mascota cambia de posición
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot mascotaSnapshot : dataSnapshot.getChildren()) {
+                        String nombreMascota = mascotaSnapshot.child("nombre").getValue(String.class);
+                        String imagenMascota = mascotaSnapshot.child("imagenUrl").getValue(String.class);
+                        Picasso.get().load(imagenMascota).into(imagenmascota1);
+                        nombreMascota1.setText(nombreMascota);
+                    }
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Manejar errores si es necesario
+
             }
         });
 
-        Button botonHiloMascota = findViewById(R.id.boton_hilomascota);
-        botonHiloMascota.setOnClickListener(new View.OnClickListener() {
+        View volverPerfilActivity = findViewById(R.id.volverPerfilActivity);
+
+        volverPerfilActivity.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Perfil_activity.this, parte2j.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(Perfil_activity.this, C_Home.class);
                 startActivity(intent);
             }
         });
+
+
+    }
+    public void redirectToSecondLayout(View view) {
+        Intent intent = new Intent(this, nuevaMascota.class);
+        startActivity(intent);
     }
 }
-

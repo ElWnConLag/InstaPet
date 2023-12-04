@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,16 +13,34 @@
         android:theme="@style/Theme.InstaPet"
         tools:targetApi="31">
         <activity
+            android:name=".BuscadorMascotas"
+            android:exported="false" />
+        <activity
+            android:name=".BuscadorIntento2"
+            android:exported="false" />
+        <activity
+            android:name=".BuscadorPrototipo"
+            android:exported="false" />
+        <activity
             android:name=".parte2j"
             android:exported="false" />
         <activity
-            android:name=".mascotaDatos"
+            android:name=".avisosAdopcion"
             android:exported="false" />
         <activity
             android:name=".agregarAviso"
             android:exported="false" />
         <activity
-            android:name=".avisosAdopcion"
+            android:name=".R_MascotaGPS"
+            android:exported="false" />
+        <activity
+            android:name=".Q_ChatDueno"
+            android:exported="false" />
+        <activity
+            android:name=".N_InfoMascotaAdopcion"
+            android:exported="false" />
+        <activity
+            android:name=".M_PerfilMascota"
             android:exported="false" />
         <activity
             android:name=".L_PerfilDueno"
@@ -44,12 +60,11 @@
         <activity
             android:name=".J_BuscarPerfil"
             android:exported="false" />
-        <activity android:name=".publi_mascotas" />
         <activity
             android:name=".Perfil_activity"
             android:exported="false" />
         <activity
-            android:name=".editar_perfil_j"
+            android:name=".nuevaMascotas"
             android:exported="false" />
         <activity
             android:name=".B_Register"

@@ -3,14 +3,16 @@ package insta.pet.instapet;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,12 +24,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class A_Login extends AppCompatActivity {
-
-
-    private static final String BROKER_URL = "tcp://your-broker-url:1883";
-    private static final String CLIENT_ID = "your_client_id";
-
-    private MqttHandler mqttHandler;
 
     EditText mEditTextEmail;
     EditText mEditTextPass;
@@ -51,12 +47,7 @@ public class A_Login extends AppCompatActivity {
         mTextViewRespuesta = findViewById(R.id.textViewRespuesta);
         mTextViewIrRegistrar = findViewById(R.id.textViewIrRegistrar);
 
-        mqttHandler = new MqttHandler();
-        mqttHandler.connect(BROKER_URL, CLIENT_ID); //MQTT
-        publishMessage("user", "Usuario agregado al registro");
-
         mAuth = FirebaseAuth.getInstance();
-
 
         mTextViewIrRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,72 +64,51 @@ public class A_Login extends AppCompatActivity {
                 pass = mEditTextPass.getText().toString().trim();
 
                 if (email.isEmpty() || pass.isEmpty()) {
-                    mostrarRespuesta("Ingrese el email y la contraseña", Color.RED);
+                    mTextViewRespuesta.setText("Ingrese el email y la contraseña");
+                    mTextViewRespuesta.setTextColor(Color.RED);
+
                 } else {
                     if (emailValido(email)) {
-                        iniciarSesion(email, pass);
+                        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    mTextViewRespuesta.setText("CORRECTO");
+                                    mTextViewRespuesta.setTextColor(Color.GREEN);
+                                    irHome();
+                                } else {
+                                    mTextViewRespuesta.setText("CREDENCIALES INCORRECTAS");
+                                    mTextViewRespuesta.setTextColor(Color.RED);
+                                }
+                            }
+                        });
                     } else {
-                        mostrarRespuesta("Email invalido", Color.RED);
+                        mTextViewRespuesta.setText("Email invalido");
+                        mTextViewRespuesta.setTextColor(Color.RED);
                     }
                 }
             }
         });
     }
 
-    private void iniciarSesion(String email, String pass) {
-        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    mostrarRespuesta("CORRECTO", Color.GREEN);
-                    FirebaseUser currentUser = mAuth.getCurrentUser();
-                    if (currentUser != null) {
-                        irHome(currentUser.getUid());
-                    }
-                } else {
-                    mostrarRespuesta("CREDENCIALES INCORRECTAS", Color.RED);
-                }
-            }
-        });
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            irHome();
+        }
     }
 
-    private void irHome(String userId) {
+    private void irHome(){
         Intent intent = new Intent(A_Login.this, C_Home.class);
-        intent.putExtra("userId", userId);
         startActivity(intent);
         finish();
     }
-
-    private void mostrarRespuesta(String mensaje, int color) {
-        mTextViewRespuesta.setText(mensaje);
-        mTextViewRespuesta.setTextColor(color);
-    }
-
     private boolean emailValido(String email) {
         String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
-    @Override                           //MQTT
-    protected void onDestroy() {
-        mqttHandler.disconnect();
-        super.onDestroy();
-    }
-    private void publishMessage(String topic, String messege){
-        Toast.makeText(this, "Mensaje a Publicar:"+messege, Toast.LENGTH_SHORT).show();
-        mqttHandler.publish(topic,messege);
-    }
-
-    private void subscribeTopic(String topic){
-        Toast.makeText(this, "Subscribing topic" + topic, Toast.LENGTH_SHORT).show();
-        mqttHandler.subscribe(topic);
-
-
-    }
 }
-
-
-
-
-

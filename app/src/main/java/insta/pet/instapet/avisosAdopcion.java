@@ -29,8 +29,6 @@ public class avisosAdopcion extends AppCompatActivity {
     Button Volver;
     Button agregarAvisoo;
 
-    Button detalles;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,23 +88,10 @@ public class avisosAdopcion extends AppCompatActivity {
                                                  Intent intent = new Intent(avisosAdopcion.this, agregarAviso.class);
                                                  startActivity(intent);
                                              }
-                                         }
+        }
 
 
         );
-
-        detalles = findViewById(R.id.detalles);
-
-        detalles.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(avisosAdopcion.this, mascotaDatos.class);
-                startActivity(intent);
-            }
-        });
-
-
-
 
     }
 

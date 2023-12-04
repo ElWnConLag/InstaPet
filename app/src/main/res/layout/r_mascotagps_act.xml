@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".R_MascotaGPS">
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mascotaGPS"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="73dp" />
+
+    <ImageButton
+        android:id="@+id/volverMascotaGPS"
+        android:layout_width="89dp"
+        android:layout_height="91dp"
+        android:background="@drawable/btnvolver"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/btnvolver" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="172dp"
+        android:layout_height="155dp"
+        tools:layout_editor_absoluteX="119dp"
+        tools:layout_editor_absoluteY="231dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
