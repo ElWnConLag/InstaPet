@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -16,7 +18,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
-import android.widget.ImageView;
 
 public class parte2j extends AppCompatActivity {
 
@@ -29,11 +30,15 @@ public class parte2j extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri imageUri;
     private StorageReference storageRef;
+    private String uid; // Asegúrate de obtener el UID adecuadamente
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parte2j);
+
+        // Asegúrate de obtener el UID del usuario actual de alguna manera (puede ser similar a cómo lo obtuviste en otras partes del código)
+        uid = obtenerUidUsuario(); // Reemplaza esto con tu lógica para obtener el UID
 
         // Inicializa la referencia a Firebase Realtime Database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -70,50 +75,64 @@ public class parte2j extends AppCompatActivity {
         guardarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Obtiene los datos de la mascota
                 String nombre = nombreMascota.getText().toString();
                 String raza = razaMascota.getText().toString();
                 String sexo = sexoMascota.getText().toString();
                 String tamaño = tamañoMascota.getText().toString();
 
-                // Crea una instancia de la clase Mascota con los datos
-                Mascotas nuevaMascotas = new Mascotas(nombre, raza, sexo, tamaño);
+                if (nombre.isEmpty() || raza.isEmpty() || sexo.isEmpty() || tamaño.isEmpty()) {
+                    // Asegurémonos de que todos los campos estén llenos
+                    Toast.makeText(parte2j.this, "Completa todos los campos", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-                // Sube la imagen a Firebase Storage y guarda la URL en la mascota
+                Mascota nuevaMascota = new Mascota(nombre, raza, sexo, tamaño);
+
                 if (imageUri != null) {
-                    StorageReference imageRef = storageRef.child("nombre_de_la_imagen.png"); // Cambia el nombre de la imagen
+                    StorageReference imageRef = storageRef.child(uid).child("nombre_de_la_imagen.png");
+
                     UploadTask uploadTask = imageRef.putFile(imageUri);
 
-                    // Maneja la subida de la imagen a Firebase Storage
                     uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    // Asigna la URL de la imagen a nuevaMascota
-                                    nuevaMascotas.setImagenUrl(uri.toString());
+                                    nuevaMascota.setImagenUrl(uri.toString());
 
-                                    // Guarda la mascota en Firebase Realtime Database, incluyendo la URL de la imagen
-                                    DatabaseReference newMascotaRef = myRef.push();
-                                    newMascotaRef.setValue(nuevaMascotas);
-
-                                    // Regresa a la actividad anterior o realiza otras acciones si es necesario
-                                    Intent intent = new Intent(parte2j.this, Perfil_activity.class);
-                                    startActivity(intent);
-                                    finish();
+                                    myRef.push().setValue(nuevaMascota).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(parte2j.this, "Mascota guardada con éxito", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(parte2j.this, Perfil_activity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(parte2j.this, "Error al guardar la mascota: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
                             });
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-
+                            Toast.makeText(parte2j.this, "Error al subir la imagen: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
             }
         });
+    }
+
+    private String obtenerUidUsuario() {
+        // Agrega aquí la lógica para obtener el UID del usuario actual
+        // Puedes obtenerlo de FirebaseAuth, por ejemplo
+        return "uid_del_usuario_actual";
     }
 
     // Manejo del resultado de la selección de imagen

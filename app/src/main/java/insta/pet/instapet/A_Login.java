@@ -3,12 +3,9 @@ package insta.pet.instapet;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -64,47 +61,47 @@ public class A_Login extends AppCompatActivity {
                 pass = mEditTextPass.getText().toString().trim();
 
                 if (email.isEmpty() || pass.isEmpty()) {
-                    mTextViewRespuesta.setText("Ingrese el email y la contraseña");
-                    mTextViewRespuesta.setTextColor(Color.RED);
-
+                    mostrarRespuesta("Ingrese el email y la contraseña", Color.RED);
                 } else {
                     if (emailValido(email)) {
-                        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    mTextViewRespuesta.setText("CORRECTO");
-                                    mTextViewRespuesta.setTextColor(Color.GREEN);
-                                    irHome();
-                                } else {
-                                    mTextViewRespuesta.setText("CREDENCIALES INCORRECTAS");
-                                    mTextViewRespuesta.setTextColor(Color.RED);
-                                }
-                            }
-                        });
+                        iniciarSesion(email, pass);
                     } else {
-                        mTextViewRespuesta.setText("Email invalido");
-                        mTextViewRespuesta.setTextColor(Color.RED);
+                        mostrarRespuesta("Email invalido", Color.RED);
                     }
                 }
             }
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            irHome();
-        }
+    private void iniciarSesion(String email, String pass) {
+        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    mostrarRespuesta("CORRECTO", Color.GREEN);
+                    FirebaseUser currentUser = mAuth.getCurrentUser();
+                    if (currentUser != null) {
+                        irHome(currentUser.getUid());
+                    }
+                } else {
+                    mostrarRespuesta("CREDENCIALES INCORRECTAS", Color.RED);
+                }
+            }
+        });
     }
 
-    private void irHome(){
+    private void irHome(String userId) {
         Intent intent = new Intent(A_Login.this, C_Home.class);
+        intent.putExtra("userId", userId);
         startActivity(intent);
         finish();
     }
+
+    private void mostrarRespuesta(String mensaje, int color) {
+        mTextViewRespuesta.setText(mensaje);
+        mTextViewRespuesta.setTextColor(color);
+    }
+
     private boolean emailValido(String email) {
         String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
