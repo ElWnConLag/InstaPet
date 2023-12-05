@@ -33,23 +33,26 @@ public class AdapterImgMascotas extends RecyclerView.Adapter<AdapterImgMascotas.
     public viewholderimagenmascotas onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_imagen_mascotas,parent,false);
-
-        return null;
+        viewholderimagenmascotas holder = new viewholderimagenmascotas(v);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewholderimagenmascotas holder, int position) {
-
+        ImagenMascotas im = imagenMascotasList.get(position);
+        holder.iv_mascotas.setImageResource();
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return imagenMascotasList.size();
     }
 
     public class viewholderimagenmascotas extends RecyclerView.ViewHolder {
+        ImageView  iv_mascotas;
         public viewholderimagenmascotas(@NonNull View itemView) {
             super(itemView);
+            iv_mascotas = itemView.findViewById(R.id.iv_mascotas);
         }
     }
 }
