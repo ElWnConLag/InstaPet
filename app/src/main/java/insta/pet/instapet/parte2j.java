@@ -32,6 +32,8 @@ public class parte2j extends AppCompatActivity {
     private StorageReference storageRef;
     private String uid; // Asegúrate de obtener el UID adecuadamente
 
+    private MqttHandler mqttHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,8 @@ public class parte2j extends AppCompatActivity {
         // Inicializa la referencia a Firebase Realtime Database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference("Mascotas");
+
+        mqttHandler = new MqttHandler();
 
         // Inicializa la referencia a Firebase Storage
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -85,6 +89,9 @@ public class parte2j extends AppCompatActivity {
                     Toast.makeText(parte2j.this, "Completa todos los campos", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                mqttHandler.connect("mqtt://prueba-mqtt-ust.cloud.shiftr.io:1883", "TN285V8kWXcveB0a");
+                mqttHandler.publish("Jerson", raza);
 
                 Mascota nuevaMascota = new Mascota(nombre, raza, sexo, tamaño);
 
