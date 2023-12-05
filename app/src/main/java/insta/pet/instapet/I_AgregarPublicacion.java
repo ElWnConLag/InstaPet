@@ -31,6 +31,8 @@ public class I_AgregarPublicacion extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri imageUri;
 
+    private MqttHandler mqttHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,8 @@ public class I_AgregarPublicacion extends AppCompatActivity {
         Button seleccionarImagenButton = findViewById(R.id.imagen_bt_hilomascotaaaa);
         ImageView imagenMascota = findViewById(R.id.imagenmascota2);
 
+        mqttHandler = new MqttHandler();
+
         botonPublicacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +60,9 @@ public class I_AgregarPublicacion extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 guardarPublicacionEnFirebase();
+                mqttHandler.connect("mqtt://prueba-mqtt-ust.cloud.shiftr.io:1883", "TN285V8kWXcveB0a");
+                String titulo = ((EditText) findViewById(R.id.nombrehilomascotaAAAA)).getText().toString();
+                mqttHandler.publish("Jason", titulo);
             }
         });
 

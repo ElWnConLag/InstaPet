@@ -89,17 +89,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="628dp"
-        android:text="detalles"
+        android:text="Detalles"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/volverAdopcion" />
-
-    <TextView
-        android:id="@+id/textViewMensaje"
-        android:layout_width="224dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="220dp"
-        android:text="adsjjlasklda"
-        app:layout_constraintTop_toBottomOf="@+id/perroImagen"
-        tools:layout_editor_absoluteX="52dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
