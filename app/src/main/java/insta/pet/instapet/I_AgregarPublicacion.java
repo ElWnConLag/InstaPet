@@ -17,7 +17,7 @@ public class I_AgregarPublicacion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.i_agregarpublicacion_act);
 
-        botonPublicacion = findViewById(R.id.volverPublicacion);
+        //botonPublicacion = findViewById(R.id.volverPublicacion);
 
         botonPublicacion.setOnClickListener(new View.OnClickListener() {
             @Override

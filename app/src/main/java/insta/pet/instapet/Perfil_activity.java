@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.google.firebase.database.ChildEventListener;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class Perfil_activity extends AppCompatActivity {
 
@@ -26,6 +27,8 @@ public class Perfil_activity extends AppCompatActivity {
     private TextView nombreMascota1;
     private ImageView imagenperfil1;
     private TextView nombreperfil1;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
