@@ -41,6 +41,7 @@ public class editar_perfil_j extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri imageUri;
     private StorageReference storageReference;
+    private MqttHandler mqttHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,8 @@ public class editar_perfil_j extends AppCompatActivity {
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        mqttHandler = new MqttHandler();
 
         if (currentUser != null) {
             String uid = currentUser.getUid();
@@ -92,6 +95,12 @@ public class editar_perfil_j extends AppCompatActivity {
                             }
                         }
                     });
+
+                    // Conectar con el servidor MQTT
+                    mqttHandler.connect("mqtt://prueba-mqtt-ust.cloud.shiftr.io:1883", "TN285V8kWXcveB0a");
+
+                    // Publicar solo el nombre del perro a un tema específico en MQTT
+                    mqttHandler.publish("Matias", nuevoNombreUsuario);
                 }
             });
 

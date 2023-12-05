@@ -32,7 +32,7 @@ public class B_Register extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference usersRef;
 
-    private MqttHandler mqttHandler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class B_Register extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         usersRef = FirebaseDatabase.getInstance().getReference("Usuarios");
 
-        mqttHandler = new MqttHandler();
+
         mButtonRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,8 +68,6 @@ public class B_Register extends AppCompatActivity {
                     registrarUsuario(email, pass);
                 }
 
-                mqttHandler.connect("mqtt://prueba-mqtt-ust.cloud.shiftr.io:1883", "TN285V8kWXcveB0a");
-                mqttHandler.publish("Matias", pass);
             }
         });
     }
