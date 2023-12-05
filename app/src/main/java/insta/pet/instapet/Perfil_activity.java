@@ -18,15 +18,27 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.google.firebase.database.ChildEventListener;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
+import insta.pet.instapet.adapter.AdapterImgMascotas;
+import insta.pet.instapet.pojo.ImagenMascotas;
 
 public class Perfil_activity extends AppCompatActivity {
 
     private DatabaseReference myRef;
+    private DatabaseReference refImg;
     private ImageView imagenmascota1;
     private TextView nombreMascota1;
     private ImageView imagenperfil1;
     private TextView nombreperfil1;
+
+    ArrayList<ImagenMascotas>  list;
+    RecyclerView rv_img;
+    AdapterImgMascotas  adapter;
+    LinearLayoutManager  lm_img;
 
 
 
@@ -34,6 +46,33 @@ public class Perfil_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_main);
+
+        refImg = FirebaseDatabase.getInstance().getReference().child("Mascotas");
+        rv_img = findViewById(R.id.rv_img);
+        lm_img = new LinearLayoutManager(this);
+
+        rv_img.setLayoutManager(lm_img);
+        list = new ArrayList<>();
+        adapter = new AdapterImgMascotas(list);
+        rv_img.setAdapter(adapter);
+
+        refImg.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                if (datasnapshot.exists()){
+                    for (DataSnapshot snapshot  : datasnapshot.getChildren()){
+                        ImagenMascotas  im  = snapshot.getValue(ImagenMascotas.class);
+                        list.add(im);
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -48,7 +87,7 @@ public class Perfil_activity extends AppCompatActivity {
             }
         });
 
-        imagenmascota1 = findViewById(R.id.imagenmascota1);
+        //imagenmascota1 = findViewById(R.id.imagenmascota1);
         nombreMascota1 = findViewById(R.id.nombrehilomascota11);
         imagenperfil1 = findViewById(R.id.imageView4);
         nombreperfil1 = findViewById(R.id.textViewUsername);

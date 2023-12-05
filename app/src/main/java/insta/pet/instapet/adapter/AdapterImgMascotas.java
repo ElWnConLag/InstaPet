@@ -28,6 +28,11 @@ import insta.pet.instapet.pojo.ImagenMascotas;
 public class AdapterImgMascotas extends RecyclerView.Adapter<AdapterImgMascotas.viewholderimagenmascotas>{
 
     List<ImagenMascotas> imagenMascotasList;
+
+    public AdapterImgMascotas(List<ImagenMascotas> imagenMascotasList) {
+        this.imagenMascotasList = imagenMascotasList;
+    }
+
     @NonNull
     @Override
     public viewholderimagenmascotas onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,7 +45,8 @@ public class AdapterImgMascotas extends RecyclerView.Adapter<AdapterImgMascotas.
     @Override
     public void onBindViewHolder(@NonNull viewholderimagenmascotas holder, int position) {
         ImagenMascotas im = imagenMascotasList.get(position);
-        holder.iv_mascotas.setImageResource();
+        Picasso.get().load(im.getImagenUrl()).into(holder.iv_mascotas);
+
     }
 
     @Override
