@@ -45,7 +45,7 @@ public class editar_perfil_j extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.editar_pefil);
+        setContentView(R.layout.editar_perfil_j_act);
 
         editTextNombreUsuario = findViewById(R.id.editTextNombreUsuario);
         correo_id = findViewById(R.id.correo_id);
