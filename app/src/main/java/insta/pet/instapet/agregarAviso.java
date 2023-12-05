@@ -32,6 +32,15 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
+import org.eclipse.paho.client.mqttv3.IMqttToken;
+import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
+import insta.pet.instapet.MqttHandler;
+
 public class agregarAviso extends AppCompatActivity {
 
     private EditText editTextNombrePerro;
@@ -51,8 +60,7 @@ public class agregarAviso extends AppCompatActivity {
 
     private Uri imageUri;
 
-
-
+    private MqttHandler mqttHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,12 +74,13 @@ public class agregarAviso extends AppCompatActivity {
         imagenPerfilPerro = findViewById(R.id.imagenPerfilPerro);
         descripcionPerro = findViewById(R.id.descripcionPerro);
 
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference("DatosPerro");
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference("imagenAvisos");
+
+        mqttHandler = new MqttHandler();
 
         Button guardarButton = findViewById(R.id.botonGuardar);
         guardarButton.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +91,7 @@ public class agregarAviso extends AppCompatActivity {
                 String nuevoSexoPerro = sexoPerro.getText().toString();
                 String nuevaUbicacion = ubicacionPerro.getText().toString();
                 String nuevaDescripcion = descripcionPerro.getText().toString();
+
 
                 if (nuevoNombrePerro.isEmpty() || nuevaRaza.isEmpty() || nuevoSexoPerro.isEmpty() || nuevaUbicacion.isEmpty() || nuevaDescripcion.isEmpty()) {
                     showToast("Debes rellenar todos los campos");
@@ -107,10 +117,14 @@ public class agregarAviso extends AppCompatActivity {
                             }
                         }
                     });
+
+                    // Conectar con el servidor MQTT
+                    mqttHandler.connect("mqtt://prueba-mqtt-ust.cloud.shiftr.io:1883", "TN285V8kWXcveB0a");
+
+                    // Publicar solo el nombre del perro a un tema específico en MQTT
+                    mqttHandler.publish("Cesar", nuevoNombrePerro);
                 }
             }
-
-
         });
 
         Button seleccionarImage = findViewById(R.id.seleccionarImage);
@@ -128,9 +142,6 @@ public class agregarAviso extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Seleccionar una imagen"), PICK_IMAGE_REQUEST);
     }
-
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -191,9 +202,6 @@ public class agregarAviso extends AppCompatActivity {
         }
     }
 
-
-
-
     private void showToastAndNavigate(String message) {
         Toast.makeText(agregarAviso.this, message, Toast.LENGTH_SHORT).show();
     }
@@ -201,9 +209,4 @@ public class agregarAviso extends AppCompatActivity {
     private void showToast(String message) {
         Toast.makeText(agregarAviso.this, message, Toast.LENGTH_SHORT).show();
     }
-
-
-
-
-
 }
