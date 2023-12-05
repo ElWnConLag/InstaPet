@@ -124,4 +124,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.468" />
 
+    <TextView
+        android:id="@+id/textViewMensaje"
+        android:layout_width="224dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="220dp"
+        android:text="adsjjlasklda"
+        app:layout_constraintTop_toBottomOf="@+id/perroImagen"
+        tools:layout_editor_absoluteX="52dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

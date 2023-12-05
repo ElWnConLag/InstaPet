@@ -20,13 +20,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import insta.pet.instapet.MqttHandler;
 
 public class A_Login extends AppCompatActivity {
     private static final String BROKER_URL = "tcp://your-broker-url:1883";
     private static final String CLIENT_ID = "your_client_id";
 
     private MqttHandler mqttHandler;
-
 
     EditText mEditTextEmail;
     EditText mEditTextPass;
@@ -50,9 +50,9 @@ public class A_Login extends AppCompatActivity {
         mTextViewRespuesta = findViewById(R.id.textViewRespuesta);
         mTextViewIrRegistrar = findViewById(R.id.textViewIrRegistrar);
 
-            mqttHandler = new MqttHandler();
-            mqttHandler.connect(BROKER_URL, CLIENT_ID); //MQTT
-            publishMessage("user", "Usuario agregado al registro");
+        mqttHandler = new MqttHandler();
+        mqttHandler.connect(BROKER_URL, CLIENT_ID);
+        publishMessage("user", "Usuario agregado al registro");
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -76,7 +76,7 @@ public class A_Login extends AppCompatActivity {
                     if (emailValido(email)) {
                         iniciarSesion(email, pass);
                     } else {
-                        mostrarRespuesta("Email invalido", Color.RED);
+                        mostrarRespuesta("Email inválido", Color.RED);
                     }
                 }
             }
@@ -119,23 +119,19 @@ public class A_Login extends AppCompatActivity {
         return matcher.matches();
     }
 
-    @Override                           //MQTT
+    @Override
     protected void onDestroy() {
         mqttHandler.disconnect();
         super.onDestroy();
-
-
-    }
-    private void publishMessage(String topic, String messege){
-
-        Toast.makeText(this, "Mensaje a Publicar:"+messege, Toast.LENGTH_SHORT).show();
-        mqttHandler.publish(topic,messege);
     }
 
-    private void subscribeTopic(String topic){
-        Toast.makeText(this, "Subscribing topic" + topic, Toast.LENGTH_SHORT).show();
+    private void publishMessage(String topic, String message) {
+        Toast.makeText(this, "Mensaje a Publicar: " + message, Toast.LENGTH_SHORT).show();
+        mqttHandler.publish(topic, message);
+    }
+
+    private void subscribeTopic(String topic) {
+        Toast.makeText(this, "Suscribiendo al tema: " + topic, Toast.LENGTH_SHORT).show();
         mqttHandler.subscribe(topic);
-
-
     }
 }
