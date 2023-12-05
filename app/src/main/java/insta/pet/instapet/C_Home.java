@@ -1,6 +1,9 @@
 package insta.pet.instapet;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.content.Intent;
@@ -10,8 +13,26 @@ import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+import insta.pet.instapet.adapter.AdapterPublicaciones;
+import insta.pet.instapet.pojo.Publicaciones;
 
 public class C_Home extends AppCompatActivity {
+
+    DatabaseReference  ref;
+    ArrayList<Publicaciones> list;
+    RecyclerView rvp;
+    AdapterPublicaciones  adapter;
+
+    LinearLayoutManager lmp;
+
 
     ImageButton botonAdopcion;
     ImageButton botonBuscar;
@@ -26,6 +47,35 @@ public class C_Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.c_home_act);
+
+        //parte para recyclerview
+        ref = FirebaseDatabase.getInstance().getReference().child("Publicaciones");
+        rvp = findViewById(R.id.rvp);
+        lmp = new LinearLayoutManager(this);
+        rvp.setLayoutManager(lmp);
+        list = new ArrayList<>();
+        adapter = new AdapterPublicaciones(list);
+        rvp.setAdapter(adapter);
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        Publicaciones pb = snapshot.getValue(Publicaciones.class);
+                        list.add(pb);
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //fin parte para recyclerview
+
 
         botonAdopcion = findViewById(R.id.btnAdoptar);
         botonBuscar = findViewById(R.id.btnBuscar);

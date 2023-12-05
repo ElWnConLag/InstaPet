@@ -103,29 +103,23 @@ tools:context=".C_Home">
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="232dp"
-        android:layout_height="237dp"
-        android:layout_marginTop="68dp"
-        android:background="@drawable/rblanco"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="@+id/fondo"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout4"
-        app:layout_constraintTop_toTopOf="@+id/fondo">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="232dp"
-        android:layout_height="232dp"
-        android:background="@drawable/rblanco"
+        android:layout_width="282dp"
+        android:layout_height="592dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="@+id/fondo"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toEndOf="@+id/linearLayout4"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        app:layout_constraintVertical_bias="0.422"></LinearLayout>
+        app:layout_constraintTop_toTopOf="@+id/fondo"
+        app:layout_constraintVertical_bias="0.69">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
