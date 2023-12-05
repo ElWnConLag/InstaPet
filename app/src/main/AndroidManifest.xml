@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InstaPet"
         tools:targetApi="31">
+
+        <activity
+            android:name=".mascotaDatos"
+            android:label="mascotaDatos" />
         <activity
             android:name=".BuscadorMascotas"
             android:exported="false" />
@@ -87,5 +91,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
