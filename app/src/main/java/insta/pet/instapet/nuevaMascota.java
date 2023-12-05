@@ -42,7 +42,7 @@ public class nuevaMascota extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nueva_mascota_perfil);
+        setContentView(R.layout.editar_perfil_j_act);
 
         View volverNuevaMascota = findViewById(R.id.volverNuevaMascota);
 
