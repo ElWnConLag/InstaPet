@@ -101,7 +101,6 @@
         android:layout_marginTop="628dp"
         android:text="Detalles"
         android:backgroundTint="#F9A514"
-        android:text="detalles"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
