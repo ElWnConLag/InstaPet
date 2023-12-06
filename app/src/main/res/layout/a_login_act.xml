@@ -108,18 +108,13 @@
             android:gravity="center"
             android:text="Respuesta" />
 
-        <TextView
-            android:id="@+id/textViewIrRegistrar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="40dp"
-            android:background="#FF9800"
-            android:backgroundTint="#FF9800"
-            android:gravity="center"
-            android:text="Crear cuenta"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+        <ImageButton
+            android:id="@+id/btn_crearcuenta"
+            android:layout_width="236dp"
+            android:layout_height="54dp"
+            android:background="@drawable/btn_crearcuenta"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/btn_crearcuenta" />
 
     </LinearLayout>
 

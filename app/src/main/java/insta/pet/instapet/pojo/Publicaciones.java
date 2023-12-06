@@ -4,6 +4,7 @@ public class Publicaciones {
 
     private String titulo;
     private String descripcion;
+    private String imagenUrl;
 
     public Publicaciones() {
     }

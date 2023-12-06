@@ -49,6 +49,7 @@ public class C_Home extends AppCompatActivity {
     ImageButton botonPerfil;
 
 
+
     FirebaseAuth mAuth;
 
     @Override
@@ -117,6 +118,7 @@ public class C_Home extends AppCompatActivity {
         botonSettings = findViewById(R.id.btnAjustes);
         botonPerfil = findViewById(R.id.perfil);
         botonPublicacion = findViewById(R.id.AgregarPublicacion);
+
 
 
 

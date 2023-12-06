@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class A_Login extends AppCompatActivity {
     Button mButtonInicio;
     TextView mTextViewRespuesta;
     TextView mTextViewIrRegistrar;
+    ImageButton btn_crearcuenta;
 
     FirebaseAuth mAuth;
 
@@ -48,7 +50,7 @@ public class A_Login extends AppCompatActivity {
         mEditTextPass = findViewById(R.id.editTextPass);
         mButtonInicio = findViewById(R.id.btnInicio);
         mTextViewRespuesta = findViewById(R.id.textViewRespuesta);
-        mTextViewIrRegistrar = findViewById(R.id.textViewIrRegistrar);
+
 
         mqttHandler = new MqttHandler();
         mqttHandler.connect(BROKER_URL, CLIENT_ID);
@@ -56,13 +58,8 @@ public class A_Login extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        mTextViewIrRegistrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(A_Login.this, B_Register.class);
-                startActivity(intent);
-            }
-        });
+        btn_crearcuenta = findViewById(R.id.btn_crearcuenta);
+
 
         mButtonInicio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +76,13 @@ public class A_Login extends AppCompatActivity {
                         mostrarRespuesta("Email inválido", Color.RED);
                     }
                 }
+            }
+        });
+        btn_crearcuenta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(A_Login.this, B_Register.class);
+                startActivity(intent);
             }
         });
     }
