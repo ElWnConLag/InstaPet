@@ -21,15 +21,16 @@
 
             <TextView
                 android:id="@+id/tv_descripcion"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Titulo:"
                 android:textColor="#000"
-                android:textSize="25dp"></TextView>
+                android:textSize="25dp"
+                android:textStyle="bold"></TextView>
 
             <TextView
                 android:id="@+id/tv_titulo"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Descripcion:"
                 android:textColor="#000"
@@ -37,9 +38,9 @@
 
             <ImageView
                 android:id="@+id/iv_publicacion"
-                android:layout_marginTop="20dp"
                 android:layout_width="343dp"
                 android:layout_height="200dp"
+                android:layout_marginTop="20dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/fondo" />
 

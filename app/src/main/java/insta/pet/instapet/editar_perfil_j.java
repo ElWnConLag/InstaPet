@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class editar_perfil_j extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri imageUri;
     private StorageReference storageReference;
+    private ImageButton bt_volverNuevaMascota;
 
     private MqttHandler mqttHandler;
 
@@ -49,6 +51,16 @@ public class editar_perfil_j extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editar_perfil_j_act);
+
+        bt_volverNuevaMascota = findViewById(R.id.volverNuevaMascota);
+
+        bt_volverNuevaMascota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(editar_perfil_j.this, Perfil_activity.class);
+                startActivity(intent);
+            }
+        });
 
         editTextNombreUsuario = findViewById(R.id.editTextNombreUsuario);
         correo_id = findViewById(R.id.correo_id);

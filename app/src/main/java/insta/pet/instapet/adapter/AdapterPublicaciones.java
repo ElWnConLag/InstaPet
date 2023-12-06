@@ -3,10 +3,13 @@ package insta.pet.instapet.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -36,6 +39,7 @@ public class AdapterPublicaciones extends  RecyclerView.Adapter<AdapterPublicaci
 
         holder.tv_titulo.setText(pb.getTitulo());
         holder.tv_descripcion.setText(pb.getDescripcion());
+        Picasso.get().load(pb.getImagenUrl()).into(holder.iv_publicacion);
     }
 
     @Override
@@ -46,11 +50,13 @@ public class AdapterPublicaciones extends  RecyclerView.Adapter<AdapterPublicaci
     public class viewholderpublicaciones extends RecyclerView.ViewHolder {
 
         TextView tv_titulo,tv_descripcion;
+        ImageView iv_publicacion;
         public viewholderpublicaciones(@NonNull View itemView) {
             super(itemView);
 
             tv_titulo = itemView.findViewById(R.id.tv_titulo);
             tv_descripcion = itemView.findViewById(R.id.tv_descripcion);
+            iv_publicacion = itemView.findViewById(R.id.iv_publicacion);
         }
     }
 }

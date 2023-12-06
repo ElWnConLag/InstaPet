@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,12 +33,16 @@ public class parte2j extends AppCompatActivity {
     private StorageReference storageRef;
     private String uid; // Asegúrate de obtener el UID adecuadamente
 
+    private ImageButton bt_volverCrearMascota;
+
     private MqttHandler mqttHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parte2j);
+
+        bt_volverCrearMascota = findViewById(R.id.bt_volverCrearMascota);
 
         // Asegúrate de obtener el UID del usuario actual de alguna manera (puede ser similar a cómo lo obtuviste en otras partes del código)
         uid = obtenerUidUsuario(); // Reemplaza esto con tu lógica para obtener el UID
@@ -73,6 +78,15 @@ public class parte2j extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent, "Selecciona una imagen"), PICK_IMAGE_REQUEST);
             }
         });
+
+        bt_volverCrearMascota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(parte2j.this, Perfil_activity.class);
+                startActivity(intent);
+            }
+        });
+
 
         // Botón "Guardar"
         Button guardarButton = findViewById(R.id.buttonhilomascota);

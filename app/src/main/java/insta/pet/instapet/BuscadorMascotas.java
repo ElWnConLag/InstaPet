@@ -9,6 +9,8 @@ import androidx.appcompat.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,9 +20,17 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import insta.pet.instapet.adapter.AdapterDatosUsuarios;
 import insta.pet.instapet.adapter.AdapterMascota;
+import insta.pet.instapet.pojo.DatosUsuarios;
 
 public class BuscadorMascotas extends AppCompatActivity {
+
+    DatabaseReference refDatosU;
+    ArrayList<DatosUsuarios> listDU;
+    RecyclerView rv_du;
+    AdapterDatosUsuarios adapter_du;
+    LinearLayoutManager lm_du;
 
     DatabaseReference ref;
     ArrayList<Mascotas> list;
@@ -32,6 +42,34 @@ public class BuscadorMascotas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscador_mascotas);
+
+        refDatosU = FirebaseDatabase.getInstance().getReference().child("DatosUsuario");
+        rv_du = findViewById(R.id.rv_du);
+        lm_du = new LinearLayoutManager(this);
+        rv_du.setLayoutManager(lm_du);
+        listDU = new ArrayList<>();
+        adapter_du = new AdapterDatosUsuarios(listDU);
+        rv_du.setAdapter(adapter_du);
+
+        refDatosU.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        DatosUsuarios du  = snapshot.getValue(DatosUsuarios.class);
+                        listDU.add(du);
+                    }
+                    adapter_du.notifyDataSetChanged();
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         volver = findViewById(R.id.volverBuscar);
 

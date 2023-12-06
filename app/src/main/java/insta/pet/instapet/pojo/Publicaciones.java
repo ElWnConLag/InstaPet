@@ -9,9 +9,10 @@ public class Publicaciones {
     public Publicaciones() {
     }
 
-    public Publicaciones(String titulo, String descripcion) {
+    public Publicaciones(String titulo, String descripcion, String imagenUrl) {
         this.titulo = titulo;
         this.descripcion = descripcion;
+        this.imagenUrl = imagenUrl;
     }
 
     public String getTitulo() {
@@ -28,5 +29,13 @@ public class Publicaciones {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
     }
 }

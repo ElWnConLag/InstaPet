@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/fdnpublicacion3"
     >
+
 
     <ImageButton
         android:id="@+id/volverPublicacion"
         android:layout_width="53dp"
         android:layout_height="53dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/btnvolver"
         android:scaleType="centerInside"
@@ -18,66 +20,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/btnvolver" />
 
-    <View
-        android:id="@+id/box11"
-        android:layout_width="286dp"
-        android:layout_height="72dp"
-        android:background="#4CAF50"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.068" />
-
-    <View
-        android:id="@+id/box1111"
-        android:layout_width="285dp"
-        android:layout_height="194dp"
-        android:background="#4CAF50"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.24" />
-
-    <ImageView
-        android:id="@+id/imageViewProfile222222"
-        android:layout_width="117dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="228dp"
-        android:layout_marginTop="52dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/imagenmascota2"
         android:layout_width="154dp"
         android:layout_height="117dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="152dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
-
-    <ImageView
-        android:id="@+id/imageViewProfile222222222222"
-        android:layout_width="117dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="52dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageView
-        android:id="@+id/imageViewProfile22222222222222222"
-        android:layout_width="117dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="104dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -86,87 +36,48 @@
         android:id="@+id/imagen_bt_hilomascotaaaa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="268dp"
         android:text="Seleccionar Imagen"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="221dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="332dp"
-        android:text="TITULO DE LA PUBLICACIÓN:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/box11111"
-        android:layout_width="298dp"
-        android:layout_height="49dp"
-        android:background="#4CAF50"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/nombrehilomascotaAAAAYYYY"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513" />
-
-
-    <View
-        android:id="@+id/box111111"
-        android:layout_width="294dp"
-        android:layout_height="222dp"
-        android:background="#4CAF50"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.886" />
+        app:layout_constraintTop_toBottomOf="@+id/imagenmascota2"
+        app:layout_constraintVertical_bias="0.428" />
 
     <EditText
+
         android:id="@+id/nombrehilomascotaAAAA"
         android:layout_width="238dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="456dp"
-        android:hint=""
+        android:hint="Descripcion..."
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView122"
-        android:layout_width="221dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="428dp"
-        android:text="DESCRIPCION:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/nombrehilomascotaAAAAYYYY"
+        app:layout_constraintVertical_bias="0.219" />
 
     <EditText
         android:id="@+id/nombrehilomascotaAAAAYYYY"
         android:layout_width="238dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="352dp"
-        android:hint=""
+        android:hint="Titulo..."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
         android:text="Guardar publicacion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

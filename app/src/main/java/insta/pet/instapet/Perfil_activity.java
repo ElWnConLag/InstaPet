@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -35,6 +36,8 @@ public class Perfil_activity extends AppCompatActivity {
     private ImageView imagenperfil1;
     private TextView nombreperfil1;
 
+    private ImageButton bt_volverPerfil;
+
     ArrayList<ImagenMascotas>  list;
     RecyclerView rv_img;
     AdapterImgMascotas  adapter;
@@ -44,6 +47,8 @@ public class Perfil_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_main);
+
+        bt_volverPerfil = findViewById(R.id.volverPerfilActivity);
 
         refImg = FirebaseDatabase.getInstance().getReference().child("Mascotas");
         rv_img = findViewById(R.id.rv_img);
@@ -87,7 +92,7 @@ public class Perfil_activity extends AppCompatActivity {
             }
         });
 
-        //imagenmascota1 = findViewById(R.id.imagenmascota1);
+
         nombreMascota1 = findViewById(R.id.nombrehilomascota11);
         imagenperfil1 = findViewById(R.id.imageView4);
         nombreperfil1 = findViewById(R.id.textViewUsername);
@@ -151,6 +156,13 @@ public class Perfil_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Perfil_activity.this, parte2j.class);
+                startActivity(intent);
+            }
+        });
+        bt_volverPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Perfil_activity.this, C_Home.class);
                 startActivity(intent);
             }
         });
