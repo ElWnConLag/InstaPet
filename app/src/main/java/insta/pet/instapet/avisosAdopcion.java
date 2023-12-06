@@ -25,6 +25,7 @@ public class avisosAdopcion extends AppCompatActivity {
 
     private TextView descripcionPerro;
 
+
     private DatabaseReference mDataBase;
     Button Volver;
     Button agregarAvisoo;

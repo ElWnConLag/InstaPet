@@ -133,4 +133,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/volverDetalles"
+        android:layout_width="71dp"
+        android:layout_height="65dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/btnvolver"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/btnvolver" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

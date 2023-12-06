@@ -76,7 +76,7 @@ tools:context=".C_Home">
             android:layout_marginLeft="5dp"
             android:background="@drawable/perfilejemplo"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/perfilboton" />
+            app:srcCompat="@drawable/botonperfil" />
 
     </LinearLayout>
 

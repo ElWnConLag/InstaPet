@@ -3,7 +3,10 @@ package insta.pet.instapet;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
@@ -20,11 +23,22 @@ public class mascotaDatos extends AppCompatActivity {
     private TextView editTextNombrePerro, raza_id, sexoPerro, ubicacionPerro;
 
     private DatabaseReference mDataBase;
+    private ImageButton volverDetalles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mascota_datos);
+
+        volverDetalles = findViewById(R.id.volverDetalles);
+
+        volverDetalles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mascotaDatos.this, avisosAdopcion.class);
+                startActivity(intent);
+            }
+        });
 
         ubicacionPerro = findViewById(R.id.ubicacionContacto);
         sexoPerro = findViewById(R.id.sexoContacto);

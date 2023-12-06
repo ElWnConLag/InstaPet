@@ -14,6 +14,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -61,11 +62,14 @@ public class agregarAviso extends AppCompatActivity {
     private Uri imageUri;
 
     private MqttHandler mqttHandler;
+    private ImageButton bt_volverAvisoN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_aviso);
+
+        bt_volverAvisoN = findViewById(R.id.bt_volverAvisoN);
 
         editTextNombrePerro = findViewById(R.id.editTextNombrePerro);
         raza_id= findViewById(R.id.raza_id);
@@ -81,6 +85,14 @@ public class agregarAviso extends AppCompatActivity {
         storageReference = storage.getReference("imagenAvisos");
 
         mqttHandler = new MqttHandler();
+
+        bt_volverAvisoN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(agregarAviso.this, avisosAdopcion.class);
+                startActivity(intent);
+            }
+        });
 
         Button guardarButton = findViewById(R.id.botonGuardar);
         guardarButton.setOnClickListener(new View.OnClickListener() {
