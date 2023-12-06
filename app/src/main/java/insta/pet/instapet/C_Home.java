@@ -21,10 +21,18 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import insta.pet.instapet.adapter.AdapterPetHome;
 import insta.pet.instapet.adapter.AdapterPublicaciones;
+import insta.pet.instapet.pojo.PetsHome;
 import insta.pet.instapet.pojo.Publicaciones;
 
 public class C_Home extends AppCompatActivity {
+
+    DatabaseReference refPets;
+    ArrayList<PetsHome> listP;
+    RecyclerView rv_home;
+    AdapterPetHome adapterPets;
+    LinearLayoutManager lmPets;
 
     DatabaseReference  ref;
     ArrayList<Publicaciones> list;
@@ -47,6 +55,33 @@ public class C_Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.c_home_act);
+
+        refPets = FirebaseDatabase.getInstance().getReference().child("Mascotas");
+        rv_home = findViewById(R.id.rv_home);
+        lmPets = new LinearLayoutManager(this);
+        rv_home.setLayoutManager(lmPets);
+        listP = new ArrayList<>();
+        adapterPets = new AdapterPetHome(listP);
+        rv_home.setAdapter(adapterPets);
+
+        refPets.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        PetsHome ph = snapshot.getValue(PetsHome.class);
+                        listP.add(ph);
+                    }
+                    adapterPets.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         //parte para recyclerview
         ref = FirebaseDatabase.getInstance().getReference().child("Publicaciones");

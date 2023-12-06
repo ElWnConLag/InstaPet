@@ -40,8 +40,6 @@ public class Perfil_activity extends AppCompatActivity {
     AdapterImgMascotas  adapter;
     LinearLayoutManager  lm_img;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,9 +47,11 @@ public class Perfil_activity extends AppCompatActivity {
 
         refImg = FirebaseDatabase.getInstance().getReference().child("Mascotas");
         rv_img = findViewById(R.id.rv_img);
-        lm_img = new LinearLayoutManager(this);
 
+        // Configuración del LinearLayoutManager para que sea horizontal
+        lm_img = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rv_img.setLayoutManager(lm_img);
+
         list = new ArrayList<>();
         adapter = new AdapterImgMascotas(list);
         rv_img.setAdapter(adapter);
@@ -156,4 +156,3 @@ public class Perfil_activity extends AppCompatActivity {
         });
     }
 }
-

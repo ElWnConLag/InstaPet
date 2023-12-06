@@ -85,21 +85,20 @@ tools:context=".C_Home">
         android:layout_height="593dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/barralateral"
-        android:gravity="center|top"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fondo"
         app:layout_constraintVertical_bias="0.697">
 
-        <ImageButton
-            android:id="@+id/imageButton7"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/mascotaejemplo"
-            android:scaleType="centerInside"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/mascotaejemplo" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_home"
+            android:layout_width="64dp"
+            android:layout_height="534dp"
+            android:layout_margin="10dp"
+            android:foregroundGravity="center" />
+
     </LinearLayout>
 
     <LinearLayout

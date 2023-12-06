@@ -40,6 +40,7 @@
 
 
         <LinearLayout
+            android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -111,7 +112,7 @@
             android:id="@+id/textViewIrRegistrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="60dp"
+            android:layout_margin="40dp"
             android:background="#FF9800"
             android:backgroundTint="#FF9800"
             android:gravity="center"
