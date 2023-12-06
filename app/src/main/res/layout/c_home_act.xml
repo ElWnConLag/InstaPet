@@ -83,7 +83,7 @@ tools:context=".C_Home">
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fondo"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.697">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -103,7 +103,7 @@ tools:context=".C_Home">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toEndOf="@+id/linearLayout4"
-        app:layout_constraintTop_toTopOf="@+id/fondo"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.69">
 
         <androidx.recyclerview.widget.RecyclerView
