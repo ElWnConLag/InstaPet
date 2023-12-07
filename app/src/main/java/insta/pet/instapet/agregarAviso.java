@@ -134,7 +134,9 @@ public class agregarAviso extends AppCompatActivity {
                     mqttHandler.connect("mqtt://prueba-mqtt-ust.cloud.shiftr.io:1883", "TN285V8kWXcveB0a");
 
                     // Publicar solo el nombre del perro a un tema específico en MQTT
-                    mqttHandler.publish("Cesar", nuevoNombrePerro);
+                    mqttHandler.publish("Guardado Correctamente", nuevoNombrePerro);
+
+                    showToast("Guardado Correctamente");
                 }
             }
         });

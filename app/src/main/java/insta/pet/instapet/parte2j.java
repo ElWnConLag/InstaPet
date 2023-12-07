@@ -105,7 +105,12 @@ public class parte2j extends AppCompatActivity {
                 }
 
                 mqttHandler.connect("mqtt://prueba-mqtt-ust.cloud.shiftr.io:1883", "TN285V8kWXcveB0a");
-                mqttHandler.publish("Jerson", raza);
+                mqttHandler.publish("Guardado Correctamente", raza);
+                Toast.makeText(getApplicationContext(), "Guardado Correctamente", Toast.LENGTH_SHORT).show();
+
+
+
+
 
                 Mascota nuevaMascota = new Mascota(nombre, raza, sexo, tamaño);
 

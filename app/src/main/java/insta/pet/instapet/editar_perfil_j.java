@@ -115,7 +115,9 @@ public class editar_perfil_j extends AppCompatActivity {
                     mqttHandler.connect("mqtt://prueba-mqtt-ust.cloud.shiftr.io:1883", "TN285V8kWXcveB0a");
 
                     // Publicar solo el nombre del perro a un tema específico en MQTT
-                    mqttHandler.publish("Matias", nuevoNombreUsuario);
+                    mqttHandler.publish("Guardado Correctamente", nuevoNombreUsuario);
+
+                    showToast("Guardado Correctamente");
                 }
             });
 
