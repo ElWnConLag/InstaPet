@@ -62,9 +62,14 @@ public class I_AgregarPublicacion extends AppCompatActivity {
                 guardarPublicacionEnFirebase();
                 mqttHandler.connect("mqtt://prueba-mqtt-ust.cloud.shiftr.io:1883", "TN285V8kWXcveB0a");
                 String titulo = ((EditText) findViewById(R.id.nombrehilomascotaAAAA)).getText().toString();
-                mqttHandler.publish("Jason", titulo);
+                mqttHandler.publish("Guardado Correctamente", titulo);
+
+                // Mostrar un Toast indicando que se ha guardado correctamente
+                Toast.makeText(getApplicationContext(), "Guardado Correctamente", Toast.LENGTH_SHORT).show();
+
             }
         });
+
 
         seleccionarImagenButton.setOnClickListener(new View.OnClickListener() {
             @Override
